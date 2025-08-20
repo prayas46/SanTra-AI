@@ -111,8 +111,11 @@ export const DashboardSidebar = () => {
                   <SidebarMenuButton
                     asChild
                     isActive={isActive(item.url)}
+                    className={cn(
+                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
+                    )}
                     tooltip={item.title}
-                    className="opacity-100"
+                    
                   >
                     <Link href={item.url} className="flex items-center gap-3">
   <item.icon className="w-5 h-5 text-black" />
@@ -136,8 +139,11 @@ export const DashboardSidebar = () => {
                   <SidebarMenuButton
                     asChild
                     isActive={isActive(item.url)}
+                    className={cn(
+                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
+                    )}
                     tooltip={item.title}
-                    className="opacity-100"
+                    
                   >
                     <Link href={item.url} className="flex items-center gap-3">
   <item.icon className="w-5 h-5 text-black" />
@@ -161,8 +167,11 @@ export const DashboardSidebar = () => {
                   <SidebarMenuButton
                     asChild
                     isActive={isActive(item.url)}
+                    className={cn(
+                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
+                    )}
                     tooltip={item.title}
-                    className="opacity-100"
+                    
                   >
                     <Link href={item.url} className="flex items-center gap-3">
   <item.icon className="w-5 h-5 text-black" />
