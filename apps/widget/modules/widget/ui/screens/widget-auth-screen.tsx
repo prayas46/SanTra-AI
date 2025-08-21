@@ -15,6 +15,7 @@ import { useMutation } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
 import { Doc } from "@workspace/backend/_generated/dataModel";
 import { userAgent } from "next/server";
+import { Contact } from "lucide-react";
 
 
 const formSchema = z.object({
@@ -54,6 +55,13 @@ export const WidgetAuthScreen = () => {
             currentUrl: window.location.href,
         
     };
+
+    const contactSessionId = await createContactSession({
+        ...values,
+        organizationId,
+        metadata,
+    });
+    console.log({ contactSessionId });
 };
     return (
         <>
