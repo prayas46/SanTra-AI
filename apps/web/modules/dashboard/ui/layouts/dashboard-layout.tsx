@@ -1,7 +1,7 @@
 import { AuthGuard } from "@/modules/auth/ui/components/auth-guard"
 import { OrganizationGuard } from "@/modules/auth/ui/components/organization-gurad"
 import { DashboardSidebar } from "@/modules/dashboard/ui/components/dashboard-sidebar";
-import { SidebarProvider } from "@workspace/ui/components/sidebar";
+import { SIDEBAR_COOKIE_NAME, SidebarProvider } from "@workspace/ui/components/sidebar";
 import { cookies } from "next/headers";
 
 
