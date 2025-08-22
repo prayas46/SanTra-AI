@@ -19,8 +19,8 @@ import { Contact } from "lucide-react";
 
 
 const formSchema = z.object({
-    name: z.string().min(1,"Name is required"),
-     email: z.string().email("Invalid email address"),
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email address"),
 });
 
 export const WidgetAuthScreen = () => {
@@ -32,12 +32,12 @@ export const WidgetAuthScreen = () => {
             email: "",
         },
     });
-    const organizationId="123";
+    const organizationId = "123";
 
     const createContactSession = useMutation(api.public.contactSessions.create);
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        if (!organizationId){
+        if (!organizationId) {
             return;
         }
         const metadata: Doc<"contactSessions">["metadata"] = {
@@ -53,16 +53,16 @@ export const WidgetAuthScreen = () => {
             cookieEnabled: navigator.cookieEnabled,
             referrer: document.referrer || "direct",
             currentUrl: window.location.href,
-        
-    };
 
-    const contactSessionId = await createContactSession({
-        ...values,
-        organizationId,
-        metadata,
-    });
-    console.log({ contactSessionId });
-};
+        };
+
+        const contactSessionId = await createContactSession({
+            ...values,
+            organizationId,
+            metadata,
+        });
+        console.log({ contactSessionId });
+    };
     return (
         <>
             <WidgetHeader>
@@ -74,58 +74,58 @@ export const WidgetAuthScreen = () => {
                         Let&apos;s get you started
                     </p>
                 </div>
-            </WidgetHeader> 
+            </WidgetHeader>
             <Form {...form}>
                 <form
                     className="flex flex-1 flex-col gap-y-4 p-4"
                     onSubmit={form.handleSubmit(onSubmit)}
-                    >
+                >
                     <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input 
+                                    <Input
                                         className="h-10 bg-background"
                                         placeholder="e.g. Rohit Sen"
                                         type="text"
                                         {...field}
-                                        />
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
-                        />
-                         <FormField
+                    />
+                    <FormField
                         control={form.control}
                         name="email"
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input 
+                                    <Input
                                         className="h-10 bg-background"
                                         placeholder="e.g. rohan.sen@example.com"
                                         type="email"
                                         {...field}
-                                        />
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
-                        />
-                        <Button
-                            disabled={form.formState.isSubmitting}
-                            size="lg"
-                            type="submit"
-                            >
-                            Continue 
-                        </Button>
-                    </form>
+                    />
+                    <Button
+                        disabled={form.formState.isSubmitting}
+                        size="lg"
+                        type="submit"
+                    >
+                        Continue
+                    </Button>
+                </form>
             </Form>
 
 
-            
+
         </>
     )
 };
