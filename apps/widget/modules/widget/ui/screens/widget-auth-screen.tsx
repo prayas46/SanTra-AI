@@ -16,6 +16,7 @@ import { api } from "@workspace/backend/_generated/api";
 import { Doc } from "@workspace/backend/_generated/dataModel";
 import { userAgent } from "next/server";
 import { Contact } from "lucide-react";
+import { contactSessionIdAtomFamily, organizationIdAtom } from "../../atoms/widget-atoms";
 
 
 const formSchema = z.object({
@@ -24,6 +25,10 @@ const formSchema = z.object({
 });
 
 export const WidgetAuthScreen = () => {
+    const organizationId = useAtomValue(organizationIdAtom);
+    const setContactSessionId = useSetAtom(
+        contactSessionIdAtomFamily(organizationId || "")
+    );
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -61,7 +66,8 @@ export const WidgetAuthScreen = () => {
             organizationId,
             metadata,
         });
-        console.log({ contactSessionId });
+       
+        setContactSessionId(contactSessionId);
     };
     return (
         <>

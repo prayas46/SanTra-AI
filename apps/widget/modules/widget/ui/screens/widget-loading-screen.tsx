@@ -5,7 +5,7 @@ import { contactSessionIdAtomFamily, errorMessageAtom, loadingMessageAtom, organ
 import { WidgetHeader } from "@/modules/widget/ui/components/widget-header";
 import { useAction, useMutation } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
-import { Id } from "@workspace/backend/_generated/dataModel";
+
 import { resumePluginState } from "next/dist/build/build-context";
 
 type InitStep = "org" | "session" | "settings" | "vapi" | "done";
@@ -85,7 +85,7 @@ export const WidgetLoadingScreen = ({ organizationId }: { organizationId: string
     }
     setLoadingMessage("Validating Session....");
     validateContactSession({
-      contactSessionId: contactSessionId as Id<"contactSessions">
+      contactSessionId
     })
       .then((result) => {
         setSessionValid(result.valid)
