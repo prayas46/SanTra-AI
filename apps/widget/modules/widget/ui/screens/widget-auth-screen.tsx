@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -14,18 +14,23 @@ import { WidgetHeader } from "@/modules/widget/ui/components/widget-header";
 import { useMutation } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
 import { Doc } from "@workspace/backend/_generated/dataModel";
-import { useAtomValue,useSetAtom} from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { userAgent } from "next/server";
 import { Contact } from "lucide-react";
-import { contactSessionIdAtomFamily, organizationIdAtom } from "../../atoms/widget-atoms";
+import { contactSessionIdAtomFamily, organizationIdAtom, screenAtom } from "../../atoms/widget-atoms";
 
 
 const formSchema = z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
 });
-const organizationId = null;
+
+
 export const WidgetAuthScreen = () => {
+
+    const setScreen = useSetAtom(screenAtom);
+
+
     const organizationId = useAtomValue(organizationIdAtom);
     const setContactSessionId = useSetAtom(
         contactSessionIdAtomFamily(organizationId || "")
@@ -38,7 +43,7 @@ export const WidgetAuthScreen = () => {
             email: "",
         },
     });
-    
+
 
     const createContactSession = useMutation(api.public.contactSessions.create);
 
@@ -67,8 +72,9 @@ export const WidgetAuthScreen = () => {
             organizationId,
             metadata,
         });
-       
+
         setContactSessionId(contactSessionId);
+        setScreen("selection");
     };
     return (
         <>
