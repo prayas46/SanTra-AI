@@ -1,6 +1,8 @@
 import { mutation, query } from "../_generated/server";
 import { ConvexError, v } from "convex/values";
-
+import { supportAgent } from "../system/ai/agents/supportAgent";
+import { saveMessage } from "@convex-dev/agent";
+import { components } from "../_generated/api";
 
 
 
@@ -63,8 +65,21 @@ export const create = mutation({
       });
     }
 
-    // TODO: Replace once functionality for thread creation is present
-    const threadId = "123";
+    const { threadId } = await supportAgent.createThread(ctx, {
+      userId: args.organizationId,
+    });
+
+
+
+    await saveMessage(ctx, components.agent, {
+      threadId,
+      message: {
+        role: "assistant",
+        //TODO:Later modify to widger setiings to change this initial message
+        content: "Hello,How can I helpu today?"
+
+      },
+    });
 
     const conversationId = await ctx.db.insert("conversations", {
       contactSessionId: session._id,
