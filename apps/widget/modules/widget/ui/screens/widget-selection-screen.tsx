@@ -8,6 +8,7 @@ import { api } from "@workspace/backend/_generated/api";
 import { MessageSquareTextIcon, ChevronRightIcon } from "lucide-react";
 import { useSetAtom, useAtomValue } from "jotai";
 import { screenAtom, organizationIdAtom,errorMessageAtom, contactSessionIdAtomFamily,conversationIdAtom } from "../../atoms/widget-atoms";
+import { WidgetFooter } from "../components/widget-footer";
   
 
 
@@ -83,6 +84,10 @@ export const WidgetSelectionScreen = () => {
           <ChevronRightIcon />
         </Button>
       </div>
+      <WidgetFooter />
+      
+
+      
 
 
 
