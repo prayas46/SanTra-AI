@@ -46,8 +46,8 @@ export const useVapi = () => {
         });
 
         vapiInstance.on('message', (message) =>{
-            if(message.type  === "tarnscript" && message.transcriptType === "final"){
-                setTranscript((prev) => [
+            if(message.type === "transcript" && message.transcriptType === "final"){
+                setTranscript((prev: TranscriptMessage[]) => [
                     ...prev,
                     {
                         role : message.role === "user" ? "user" : "assistant",
@@ -69,14 +69,14 @@ export const useVapi = () => {
         // only for testing the Vapi API, otherwise customers will provide their own Assistant ID'
 
         if(vapi){
-        vapi.start("8eda2810-f1bf-425f-8e70-b882320388b2");
+            vapi.start("8eda2810-f1bf-425f-8e70-b882320388b2");
         }
         
     };
 
     const endCall = () => {
         vapi?.stop();
-    }
+    };
 
     return{
         isSpeaking,
