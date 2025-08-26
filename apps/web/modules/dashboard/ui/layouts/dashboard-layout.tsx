@@ -13,6 +13,7 @@ export const DashboardLayout = async ({ children } : { children : React.ReactNod
        
         <AuthGuard>
             <OrganizationGuard>
+
                  <Provider>
                     <SidebarProvider defaultOpen= {defaultOpen}>
                         <DashboardSidebar />
@@ -22,6 +23,7 @@ export const DashboardLayout = async ({ children } : { children : React.ReactNod
                         </main>
                     </SidebarProvider>
             </Provider>
+
             </OrganizationGuard>
         </AuthGuard>
     );

@@ -1,20 +1,15 @@
 "use client"
 import { use } from "react";
- import { WidgetView } from "@/modules/widget/ui/views/widget-view";
+import { WidgetView } from "@/modules/widget/ui/views/widget-view";
 
-
- interface Props {
-   searchParams: Promise<{
+interface Props {
+  searchParams: Promise<{
     organizationId: string;
-   }>
- };
+  }>;
+}
 
- const Page = ({ searchParams }: Props) =>{
+export default function Page({ searchParams }: Props) {
   const { organizationId } = use(searchParams);
-  return (
-    <WidgetView organizationId={organizationId} />
-  );
+  return <WidgetView organizationId={organizationId} />;
+}
 
- };
- 
-  export default Page;
