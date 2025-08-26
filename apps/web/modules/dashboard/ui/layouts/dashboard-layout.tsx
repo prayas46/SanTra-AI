@@ -15,7 +15,6 @@ export const DashboardLayout = async ({ children } : { children : React.ReactNod
                 <DashboardSidebar />
                 <main className="flex flex-1 flex-col">
                     {children}
-
                 </main>
             </SidebarProvider>
             </OrganizationGuard>

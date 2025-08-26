@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@vapi-ai/web": "^2.3.9",
     "@convex-dev/agent": "^0.1.16",
     "@hookform/resolvers": "^5.2.1",
     "@workspace/backend": "workspace:*",
