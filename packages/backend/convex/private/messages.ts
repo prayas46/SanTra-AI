@@ -26,7 +26,7 @@ export const enhanceResponse = action({
     if (!orgId) {
       throw new ConvexError({
         code: "UNAUTHORIZED",
-        message: "Organiation not found",
+        message: "Organization not found",
       });
 
     }
@@ -70,7 +70,7 @@ export const create = mutation({
     if (!orgId) {
       throw new ConvexError({
         code: "UNAUTHORIZED",
-        message: "Organiation not found",
+        message: "Organization not found",
       });
 
     }
@@ -143,7 +143,7 @@ export const getMany = query({
     if (!orgId) {
       throw new ConvexError({
         code: "UNAUTHORIZED",
-        message: "Organiation not found",
+        message: "Organization not found",
       });
     }
 
