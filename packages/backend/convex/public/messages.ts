@@ -6,6 +6,7 @@ import { paginationOptsValidator } from "convex/server";
 import { escalateConversation } from "../system/ai/tools/escalateConversation";
 import { resolveConversation } from "../system/ai/tools/resolveConversation";
 import { saveMessage } from "@convex-dev/agent";
+import { search } from "../system/ai/tools/search";
 
 export const create = action({
     args: {
@@ -56,26 +57,27 @@ export const create = action({
 
         //TODO Implement Subscription Check
 
-        const shouldTriggerAgent = 
-        conversation.status === "unresolved";
+        const shouldTriggerAgent =
+            conversation.status === "unresolved";
 
-        if(shouldTriggerAgent){
+        if (shouldTriggerAgent) {
             await supportAgent.generateText(
-            ctx,
-            { threadId: args.threadId },
-            {
-                prompt: args.prompt,
-                tools:{
-                    escalateConversation,
-                    resolveConversation
-                }
-            }
-        )
-        }   else {
-                await saveMessage(ctx, components.agent, {
-                    threadId: args.threadId,
+                ctx,
+                { threadId: args.threadId },
+                {
                     prompt: args.prompt,
-                });
+                    tools: {
+                        escalateConversationTool: escalateConversation,
+                        resolveConversationTool: resolveConversation,
+                        serachTool: search,
+                    }
+                },
+            )
+        } else {
+            await saveMessage(ctx, components.agent, {
+                threadId: args.threadId,
+                prompt: args.prompt,
+            });
         }
     },
 });
