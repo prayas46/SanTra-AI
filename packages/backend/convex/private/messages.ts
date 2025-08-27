@@ -8,7 +8,7 @@ import { saveMessage } from "@convex-dev/agent";
 import { openai } from "@ai-sdk/openai";
 
 export const enhanceResponse = action({
-  args:{
+  args: {
     prompt: v.string(),
   },
   handler: async (ctx, args) => {
@@ -31,7 +31,7 @@ export const enhanceResponse = action({
 
     }
 
-    const response  = await generateText({
+    const response = await generateText({
       model: openai("gpt-4o-mini"),
       messages: [
         {
@@ -50,13 +50,13 @@ export const enhanceResponse = action({
 });
 
 export const create = mutation({
-    args: {
-        prompt: v.string(),
-       conversationId: v.id("conversations"),
-    },
-    handler: async (ctx, args) => {
-       
-        const identity = await ctx.auth.getUserIdentity();
+  args: {
+    prompt: v.string(),
+    conversationId: v.id("conversations"),
+  },
+  handler: async (ctx, args) => {
+
+    const identity = await ctx.auth.getUserIdentity();
 
     if (identity === null) {
       throw new ConvexError({
@@ -75,56 +75,61 @@ export const create = mutation({
 
     }
 
-        const conversation = await ctx.db.get(args.conversationId);
+    const conversation = await ctx.db.get(args.conversationId);
 
 
 
-        if (!conversation) {
-            throw new ConvexError({
-                code: "NOTE_FOUND",
-                message: "conversation not Found"
-            });
-        }
+    if (!conversation) {
+      throw new ConvexError({
+        code: "NOTE_FOUND",
+        message: "conversation not Found"
+      });
+    }
 
-        if(conversation.organizationId !== orgId) {
-        throw new ConvexError({
-            code: "UNAUTHORIZED",
-            message:"Invalid Organization ID",
-        });
+    if (conversation.organizationId !== orgId) {
+      throw new ConvexError({
+        code: "UNAUTHORIZED",
+        message: "Invalid Organization ID",
+      });
     }
 
 
 
-        if (conversation.status === "resolved") {
-            throw new ConvexError({
-                code: "BAD_REQUEST",
-                message: "Conversation Resolved",
-            });
-        }
+    if (conversation.status === "resolved") {
+      throw new ConvexError({
+        code: "BAD_REQUEST",
+        message: "Conversation Resolved",
+      });
+    }
 
+    if (conversation.status === "unresolved") {
+      await ctx.db.patch(args.conversationId, {
+        status: "escalated",
+      });
+    }
 
-        await saveMessage(ctx, components.agent, {
-            threadId: conversation.threadId,
-            agentName: identity.familyName,
-            message: {
-              role: "assistant",
-              //TODO:Later modify to widger setiings to change this initial message
-              content: args.prompt,
-      
-            },
-          });
-        
-    },
+    await saveMessage(ctx, components.agent, {
+      threadId: conversation.threadId,
+      agentName: identity.familyName,
+      message: {
+        role: "assistant",
+        //TODO:Later modify to widger setiings to change this initial message
+        content: args.prompt,
+
+      },
+    });
+
+  },
 });
 
 
 export const getMany = query({
-    args: {
-        threadId: v.string(),
-        paginationOpts: paginationOptsValidator,
-    },
-    handler: async (ctx, args) => {
-        const identity = await ctx.auth.getUserIdentity();
+  args: {
+    threadId: v.string(),
+    paginationOpts: paginationOptsValidator,
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
 
     if (identity === null) {
       throw new ConvexError({
@@ -143,22 +148,22 @@ export const getMany = query({
     }
 
     const conversation = await ctx.db
-        .query("conversations")
-        .withIndex("by_thread_id", (q) => q.eq("threadId", args.threadId))
-        .unique();
+      .query("conversations")
+      .withIndex("by_thread_id", (q) => q.eq("threadId", args.threadId))
+      .unique();
 
-    if(!conversation) {
-        throw new ConvexError({
-            code:"NOT_FOUND",
-            message:"Conversation not found",
-        });
+    if (!conversation) {
+      throw new ConvexError({
+        code: "NOT_FOUND",
+        message: "Conversation not found",
+      });
     }
- 
-    if(conversation.organizationId !== orgId) {
-        throw new ConvexError({
-            code: "UNAUTHORIZED",
-            message:"Invalid Organization ID",
-        });
+
+    if (conversation.organizationId !== orgId) {
+      throw new ConvexError({
+        code: "UNAUTHORIZED",
+        message: "Invalid Organization ID",
+      });
     }
 
 
@@ -168,13 +173,13 @@ export const getMany = query({
 
 
     const paginated = await supportAgent.listMessages(ctx, {
-            threadId: args.threadId,
-            paginationOpts: args.paginationOpts,
+      threadId: args.threadId,
+      paginationOpts: args.paginationOpts,
 
-        });
+    });
 
 
-        return paginated;
-    },
+    return paginated;
+  },
 
 });
