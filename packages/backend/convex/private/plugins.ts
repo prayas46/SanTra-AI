@@ -3,7 +3,7 @@ import { mutation, query } from "../_generated/server";
 
 export const remove = mutation({
     args: {
-        service: v.union(v.literal("vapi"))
+        service: v.union(v.literal("vapi")),
     },
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity();
@@ -29,7 +29,7 @@ export const remove = mutation({
               .withIndex("by_organization_id_and_service", (q) =>
                 q.eq("organizationId", orgId).eq("service", args.service)
               )
-              .unique()
+              .unique();
 
               if (!existingPlugin) {
                 throw new ConvexError({
@@ -47,7 +47,7 @@ export const remove = mutation({
 
 export const getOne = query({
     args: {
-        service: v.union(v.literal("vapi"))
+        service: v.union(v.literal("vapi")),
     },
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity();
@@ -73,6 +73,6 @@ export const getOne = query({
               .withIndex("by_organization_id_and_service", (q) =>
                 q.eq("organizationId", orgId).eq("service", args.service)
               )
-              .unique()
+              .unique();
         },
 });
