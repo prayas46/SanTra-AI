@@ -15,9 +15,8 @@ export default defineSchema({
       assistantId: v.optional(v.string()),
       PhoneNumber: v.optional(v.string()),
     }),
-  }),
-
-  .index("by_organization_id", ["organizationId"]),
+  })
+ .index("by_organization_id", ["organizationId"]),
 
   plugins: defineTable({
     organizationId: v.string(),
