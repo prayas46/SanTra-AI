@@ -13,7 +13,7 @@ export default defineSchema({
     }),
     vapiSettings: v.object({
       assistantId: v.optional(v.string()),
-      PhoneNumber: v.optional(v.string()),
+       phoneNumber: v.optional(v.string()),
     }),
   })
  .index("by_organization_id", ["organizationId"]),
