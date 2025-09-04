@@ -2,7 +2,7 @@
 
 import { useAtomValue } from "jotai";
 import { AlertTriangleIcon } from "lucide-react";
-import { errorMessageAtom } from "@/modules/widget/atoms/widget-atoms";
+import { errorMessageAtom, widgetSettingsAtom } from "@/modules/widget/atoms/widget-atoms";
 import { WidgetHeader } from "@/modules/widget/ui/components/widget-header";
 import { useSetAtom } from "jotai";
 import { screenAtom, conversationIdAtom, organizationIdAtom, contactSessionIdAtomFamily } from "../../atoms/widget-atoms";
@@ -18,19 +18,14 @@ import { Form, FormField } from "@workspace/ui/components/form";
 import { DicebearAvatar } from "@workspace/ui/components/dicebear-avatar";
 import { useInfiniteScroll } from "@workspace/ui/hooks/use-infinite-scroll";
 import { InfiniteScrollTrigger } from "@workspace/ui/components/infinite-scroll-trigger";
-
+import { useMemo } from "react";
 
 import {
-
   AIConversation,
   AIConversationContent,
-  AIConversationScrollButton,
 } from "@workspace/ui/components/ai/conversation";
 
-
-
 import {
-
   AIInput,
   AIInputSubmit,
   AIInputTextarea,
@@ -38,21 +33,14 @@ import {
   AIInputTools,
 } from "@workspace/ui/components/ai/input";
 
-
-
 import {
-
   AIMessage,
   AIMessageContent,
 } from "@workspace/ui/components/ai/message";
 
-
 import {
-
   AIResponse
 } from "@workspace/ui/components/ai/response";
-
-
 
 import {
   AISuggestion,
@@ -63,24 +51,33 @@ const formSchema = z.object({
   message: z.string().min(1, "Message is required"),
 });
 
-
-
-
 export const WidgetChatScreen = () => {
   const setScreen = useSetAtom(screenAtom);
   const setConversationId = useSetAtom(conversationIdAtom);
+
+  const widgetSettings = useAtomValue(widgetSettingsAtom);
   const conversationId = useAtomValue(conversationIdAtom);
   const organizationId = useAtomValue(organizationIdAtom);
   const contactSessionId = useAtomValue(
     contactSessionIdAtomFamily(organizationId || "")
   );
 
-
   const onBack = () => {
     setConversationId(null);
     setScreen("selection");
-
   };
+
+  const suggestions = useMemo(() => {
+    if (!widgetSettings) {
+      return [];
+    }
+
+    return Object.keys(widgetSettings.defaultSuggestions).map((key) => {
+      return widgetSettings.defaultSuggestions[
+        key as keyof typeof widgetSettings.defaultSuggestions
+      ];
+    });
+  }, [widgetSettings]);
 
   const conversation = useQuery(
     api.public.conversations.getOne,
@@ -88,7 +85,8 @@ export const WidgetChatScreen = () => {
       ? {
         conversationId,
         contactSessionId,
-      } : "skip"
+      }
+      : "skip"
   );
 
   const messages = useThreadMessages(
@@ -115,8 +113,6 @@ export const WidgetChatScreen = () => {
     },
   });
 
-
-
   const createMessage = useAction(api.public.messages.create);
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (!conversation || !contactSessionId) {
@@ -131,10 +127,6 @@ export const WidgetChatScreen = () => {
       contactSessionId,
     });
   };
-
-
-
-
 
   return (
     <>
@@ -154,10 +146,8 @@ export const WidgetChatScreen = () => {
           variant="transparent"
         >
           <MenuIcon />
-
         </Button>
       </WidgetHeader>
-
 
       <AIConversation>
         <AIConversationContent>
@@ -181,17 +171,39 @@ export const WidgetChatScreen = () => {
                     imageUrl="/logo.svg"
                     size={30}
                     seed="Assistant"
-                    
                   />
-
                 )}
               </AIMessage>
-            )
+            );
           })}
         </AIConversationContent>
       </AIConversation>
-      {/*TODO: add suggestions*/}
 
+      {/* TODO: add suggestions */}
+      {(messages.results?.length === 1) && (
+        <AISuggestions className="flex w-full flex-col items-end p-2">
+          {suggestions.map((suggestion) => {
+            if (!suggestion) {
+              return null;
+            }
+
+            return (
+              <AISuggestion
+                key={suggestion}
+                onClick={() => {
+                  form.setValue("message", suggestion, {
+                    shouldValidate: true,
+                    shouldDirty: true,
+                    shouldTouch: true,
+                  });
+                  form.handleSubmit(onSubmit)();
+                }}
+                suggestion={suggestion}
+              />
+            );
+          })}
+        </AISuggestions>
+      )}
 
       <Form {...form}>
         <AIInput
@@ -230,12 +242,8 @@ export const WidgetChatScreen = () => {
               type="submit"
             />
           </AIInputToolbar>
-
         </AIInput>
       </Form>
-
-
     </>
   );
 };
-

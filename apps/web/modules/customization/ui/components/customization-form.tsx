@@ -38,7 +38,9 @@ interface CustomizationFormProps {
   hasVapiPlugin: boolean;
 }
 
-export const CustomizationForm = ({  
+export const CustomizationForm = ({
+
+
   
   initialData,
   hasVapiPlugin,

@@ -5,7 +5,9 @@ import { v } from "convex/values";
 export const upsert = mutation({
     args: {
         greetMessage: v.string(),
-        defaultSuggestions: v.object({
+
+         defaultSuggestions: v.object({
+
             suggestion1: v.optional(v.string()),
             suggestion2: v.optional(v.string()),
             suggestion3: v.optional(v.string()),
@@ -21,7 +23,9 @@ export const upsert = mutation({
             throw new ConvexError({
                 code: "UNAUTHORIZED",
                 message: "Identity not found",
-            });
+
+                  });
+
         }
 
         const orgId = identity.orgId as string;
@@ -30,15 +34,19 @@ export const upsert = mutation({
             throw new ConvexError({
                 code: "UNAUTHORIZED",
                 message: "Organization not found",
-            });
+
+              });
         }
 
-        const existingWidgetSettings = await ctx.db
+            const existingWidgetSettings = await ctx.db
+
             .query("widgetSettings")
             .withIndex("by_organization_id", (q) => q.eq("organizationId", orgId))
             .unique();
 
-        if (existingWidgetSettings) {
+
+           if (existingWidgetSettings) {
+
             await ctx.db.patch(existingWidgetSettings._id, {
                 greetMessage: args.greetMessage,
                 defaultSuggestions: args.defaultSuggestions,
@@ -52,6 +60,7 @@ export const upsert = mutation({
                 vapiSettings: args.vapiSettings,
             });
         }
+
     },
 });
 
@@ -59,11 +68,13 @@ export const getOne = query({
     args: {},
     handler: async (ctx) => {
         const identity = await ctx.auth.getUserIdentity();
-        if (identity === null) {
+
+            if (identity === null) {
             throw new ConvexError({
                 code: "UNAUTHORIZED",
                 message: "Identity not found",
-            });
+                  });
+
         }
 
         const orgId = identity.orgId as string;
@@ -75,11 +86,15 @@ export const getOne = query({
             });
         }
 
+
         const widgetSettings = await ctx.db
+
             .query("widgetSettings")
             .withIndex("by_organization_id", (q) => q.eq("organizationId", orgId))
             .unique();
 
+
         return widgetSettings;
+
     },
 });
