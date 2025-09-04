@@ -41,13 +41,13 @@ interface CustomizationFormProps {
 export const CustomizationForm = ({
 
 
-  
+
   initialData,
   hasVapiPlugin,
 }: CustomizationFormProps) => {
   // 🔥 adjust this depending on your Convex API export
   const upsertWidgetSettings = useMutation(
-    api.public.widgetSettings.upsert
+    api.private.widgetSettings.upsert
   );
 
   const form = useForm<FormSchema>({
