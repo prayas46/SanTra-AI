@@ -1,3 +1,4 @@
+
 import { v } from "convex/values";
 import { query } from "../_generated/server";
 
@@ -12,6 +13,7 @@ export const getByOrganizationId = query({
         q.eq("organizationId", args.organizationId),
     )
     .unique();
+
 
         return widgetSettings;
     },

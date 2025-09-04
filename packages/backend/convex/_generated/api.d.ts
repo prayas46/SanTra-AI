@@ -59,12 +59,16 @@ declare const fullApi: ApiFromModules<{
   "private/plugins": typeof private_plugins;
   "private/secrets": typeof private_secrets;
   "private/vapi": typeof private_vapi;
+
 "private/widgetSettings": typeof private_widgetSettings;
+
   "public/contactSessions": typeof public_contactSessions;
   "public/conversations": typeof public_conversations;
   "public/messages": typeof public_messages;
   "public/organization": typeof public_organization;
+
  "public/widgetSettings": typeof public_widgetSettings;
+
   "system/ai/agents/supportAgent": typeof system_ai_agents_supportAgent;
   "system/ai/constants": typeof system_ai_constants;
   "system/ai/rag": typeof system_ai_rag;
