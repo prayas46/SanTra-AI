@@ -2,7 +2,7 @@
 
 import { useAtomValue } from "jotai";
 import { AlertTriangleIcon } from "lucide-react";
-import { errorMessageAtom, widgetSettingsAtom } from "@/modules/widget/atoms/widget-atoms";
+import { errorMessageAtom, widgetSettingsAtom, showSuggestionsAtom } from "@/modules/widget/atoms/widget-atoms";
 import { WidgetHeader } from "@/modules/widget/ui/components/widget-header";
 import { useSetAtom } from "jotai";
 import { screenAtom, conversationIdAtom, organizationIdAtom, contactSessionIdAtomFamily } from "../../atoms/widget-atoms";
@@ -10,7 +10,7 @@ import { useQuery, useAction } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
 import { Button } from "@workspace/ui/components/button";
 import { useThreadMessages, toUIMessages } from "@convex-dev/agent/react";
-import { ArrowLeftIcon, MenuIcon } from "lucide-react";
+import { ArrowLeftIcon, MenuIcon, XIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -18,7 +18,7 @@ import { Form, FormField } from "@workspace/ui/components/form";
 import { DicebearAvatar } from "@workspace/ui/components/dicebear-avatar";
 import { useInfiniteScroll } from "@workspace/ui/hooks/use-infinite-scroll";
 import { InfiniteScrollTrigger } from "@workspace/ui/components/infinite-scroll-trigger";
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 
 import {
   AIConversation,
@@ -54,16 +54,19 @@ const formSchema = z.object({
 export const WidgetChatScreen = () => {
   const setScreen = useSetAtom(screenAtom);
   const setConversationId = useSetAtom(conversationIdAtom);
+  const setShowSuggestions = useSetAtom(showSuggestionsAtom);
 
   const widgetSettings = useAtomValue(widgetSettingsAtom);
   const conversationId = useAtomValue(conversationIdAtom);
   const organizationId = useAtomValue(organizationIdAtom);
+  const showSuggestions = useAtomValue(showSuggestionsAtom);
   const contactSessionId = useAtomValue(
     contactSessionIdAtomFamily(organizationId || "")
   );
 
   const onBack = () => {
     setConversationId(null);
+    setShowSuggestions(true); // Reset suggestions when going back
     setScreen("selection");
   };
 
@@ -78,6 +81,11 @@ export const WidgetChatScreen = () => {
       ];
     });
   }, [widgetSettings]);
+
+  // Reset suggestions when conversation changes
+  useEffect(() => {
+    setShowSuggestions(true);
+  }, [conversationId, setShowSuggestions]);
 
   const conversation = useQuery(
     api.public.conversations.getOne,
@@ -179,30 +187,41 @@ export const WidgetChatScreen = () => {
         </AIConversationContent>
       </AIConversation>
 
-      {/* TODO: add suggestions */}
-      {(messages.results?.length === 1) && (
-        <AISuggestions className="flex w-full flex-col items-end p-2">
-          {suggestions.map((suggestion) => {
-            if (!suggestion) {
-              return null;
-            }
+      {/* Show suggestions when showSuggestions is true */}
+      {showSuggestions && (
+        <div className="relative">
+          <AISuggestions className="flex w-full flex-col items-end p-2">
+            {suggestions.map((suggestion) => {
+              if (!suggestion) {
+                return null;
+              }
 
-            return (
-              <AISuggestion
-                key={suggestion}
-                onClick={() => {
-                  form.setValue("message", suggestion, {
-                    shouldValidate: true,
-                    shouldDirty: true,
-                    shouldTouch: true,
-                  });
-                  form.handleSubmit(onSubmit)();
-                }}
-                suggestion={suggestion}
-              />
-            );
-          })}
-        </AISuggestions>
+              return (
+                <AISuggestion
+                  key={suggestion}
+                  onClick={() => {
+                    form.setValue("message", suggestion, {
+                      shouldValidate: true,
+                      shouldDirty: true,
+                      shouldTouch: true,
+                    });
+                    form.handleSubmit(onSubmit)();
+                    // Keep suggestions visible after clicking
+                  }}
+                  suggestion={suggestion}
+                />
+              );
+            })}
+          </AISuggestions>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="absolute top-1 right-1 h-6 w-6 p-0 hover:bg-muted"
+            onClick={() => setShowSuggestions(false)}
+          >
+            <XIcon className="h-3 w-3" />
+          </Button>
+        </div>
       )}
 
       <Form {...form}>
