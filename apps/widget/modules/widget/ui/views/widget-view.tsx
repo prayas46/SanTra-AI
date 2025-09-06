@@ -9,6 +9,7 @@ import { WidgetSelectionScreen } from "@/modules/widget/ui/screens/widget-select
 import { WidgetChatScreen } from "@/modules/widget/ui/screens/widget-chat-screen";
 import { WidgetVoiceScreen } from "@/modules/widget/ui/screens/widget-voice-screen";
 import { WidgetInboxScreen } from "../screens/widget-inbox-screen";
+import { WidgetContactScreen } from "../screens/widget-contact-screen";
 interface Props {
     organizationId: string | null;
 };
@@ -23,11 +24,11 @@ export const WidgetView = ({ organizationId }: Props) => {
         voice: <WidgetVoiceScreen />,
         inbox: <WidgetInboxScreen />,
         chat:  <WidgetChatScreen />,
-        contact: <p>TODO: Contact</p>,
+        contact: <WidgetContactScreen />,
     }
 
     return (
-         <main className="min-h-screen min-w-screen flex h-full w-full flex-col overflow-hidden rounded-xl border bg-muted">
+         <main className="flex h-full w-full flex-col overflow-hidden rounded-xl border bg-muted">
             {screenComponents[screen]}
           
          </main>
