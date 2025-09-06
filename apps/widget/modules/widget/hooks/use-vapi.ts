@@ -1,5 +1,5 @@
 import Vapi from '@vapi-ai/web';
-import { useAtom, useAtomValue } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { useEffect, useState } from 'react';
 import { vapiSecretsAtom, widgetSettingsAtom } from '../atoms/widget-atoms';
 
@@ -9,7 +9,7 @@ interface TranscriptMessage{
 }
 
 export const useVapi = () => {
-    const vapiSecrets = useAtom(vapiSecretsAtom)
+    const vapiSecrets = useAtomValue(vapiSecretsAtom)
     const widgetSettings = useAtomValue(widgetSettingsAtom)
 
 
@@ -21,13 +21,13 @@ export const useVapi = () => {
 
     useEffect(() => {
         // to be done after error resolving --- > ONLY THE COMMENTED OUT PART
-        // if (!vapiSecrets) {
-        //     return ;
-        // }
+        if (!vapiSecrets) {
+            return ;
+        }
 
         // only for testing the Vapi API, otherwise customers will provide their own API keys
 
-        const vapiInstance = new Vapi("a583229c-90ec-4962-9272-66c33c0a73b2"); // <---- vapiSecrets.publicApiKey ----> to be put here
+        const vapiInstance = new Vapi(vapiSecrets.publicApiKey); // <---- vapiSecrets.publicApiKey ----> to be put here
         setVapi(vapiInstance);
 
         vapiInstance.on('call-start', () => {
@@ -75,15 +75,15 @@ export const useVapi = () => {
 
     const startCall = () => {
         // to be done after error resolving --- > ONLY THE COMMENTED OUT PART
-        // if (!vapiSecrets || !widgetSettings?.vapiSettings?.assistantId) {
-        //     return;
-        // }
+        if (!vapiSecrets || !widgetSettings?.vapiSettings?.assistantId) {
+            return;
+        }
         setIsConnecting(true);
 
         // only for testing the Vapi API, otherwise customers will provide their own Assistant ID'
 
         if(vapi){
-            vapi.start("8eda2810-f1bf-425f-8e70-b882320388b2"); // <---- widgetSettings.vapiSettings.assistantId ----> to be put here
+            vapi.start(widgetSettings.vapiSettings.assistantId); // <---- widgetSettings.vapiSettings.assistantId ----> to be put here
         }
         
     };
