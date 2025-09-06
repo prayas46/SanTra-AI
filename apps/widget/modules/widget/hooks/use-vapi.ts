@@ -1,5 +1,7 @@
 import Vapi from '@vapi-ai/web';
+import { useAtom, useAtomValue } from 'jotai';
 import { useEffect, useState } from 'react';
+import { vapiSecretsAtom, widgetSettingsAtom } from '../atoms/widget-atoms';
 
 interface TranscriptMessage{
     role : 'user' | 'assistant';
@@ -7,6 +9,10 @@ interface TranscriptMessage{
 }
 
 export const useVapi = () => {
+    const vapiSecrets = useAtom(vapiSecretsAtom)
+    const widgetSettings = useAtomValue(widgetSettingsAtom)
+
+
     const [vapi, setVapi] = useState<Vapi | null>(null);
     const [isConnected, setIsConnected] = useState(false);
     const [isConnecting, setIsConnecting] = useState(false);
@@ -14,10 +20,14 @@ export const useVapi = () => {
     const [transcript, setTranscript] = useState<TranscriptMessage[]>([]);
 
     useEffect(() => {
+        // to be done after error resolving --- > ONLY THE COMMENTED OUT PART
+        // if (!vapiSecrets) {
+        //     return ;
+        // }
 
         // only for testing the Vapi API, otherwise customers will provide their own API keys
 
-        const vapiInstance = new Vapi("a583229c-90ec-4962-9272-66c33c0a73b2");
+        const vapiInstance = new Vapi("a583229c-90ec-4962-9272-66c33c0a73b2"); // <---- vapiSecrets.publicApiKey ----> to be put here
         setVapi(vapiInstance);
 
         vapiInstance.on('call-start', () => {
@@ -64,12 +74,16 @@ export const useVapi = () => {
     }, []);
 
     const startCall = () => {
+        // to be done after error resolving --- > ONLY THE COMMENTED OUT PART
+        // if (!vapiSecrets || !widgetSettings?.vapiSettings?.assistantId) {
+        //     return;
+        // }
         setIsConnecting(true);
 
         // only for testing the Vapi API, otherwise customers will provide their own Assistant ID'
 
         if(vapi){
-            vapi.start("8eda2810-f1bf-425f-8e70-b882320388b2");
+            vapi.start("8eda2810-f1bf-425f-8e70-b882320388b2"); // <---- widgetSettings.vapiSettings.assistantId ----> to be put here
         }
         
     };
