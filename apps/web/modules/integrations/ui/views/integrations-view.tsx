@@ -5,7 +5,7 @@ import { Button } from "@workspace/ui/components/button";
 import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import { Separator } from "@workspace/ui/components/separator";
-import { CopyIcon } from "lucide-react";
+import { CopyIcon, ExternalLinkIcon } from "lucide-react";
 import { toast } from "sonner";
 import { INTEGRATIONS, IntegrationId } from "../../constants";
 import { useState } from "react";
@@ -149,6 +149,8 @@ export const IntegrationDialog = ({
   onOpenChange: (value: boolean) => void;
   snippet: string;
 }) => {
+  const { organization } = useOrganization();
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(snippet);
@@ -156,6 +158,17 @@ export const IntegrationDialog = ({
     } catch {
       toast.error("Failed to copy to clipboard")
     }
+  };
+
+  const handlePreview = () => {
+    if (!organization?.id) {
+      toast.error("Organization ID not found");
+      return;
+    }
+    
+    // Open demo page in new tab with organization ID
+    const demoUrl = `/integration/demo?orgId=${organization.id}`;
+    window.open(demoUrl, '_blank');
   };
 
   return (
@@ -195,6 +208,23 @@ export const IntegrationDialog = ({
             <p className="text-muted-foreground text-sm">
               Paste the ChatBox code above in your page. You can add it in the HTML section.
             </p>
+          </div>
+
+          <div className="space-y-2">
+            <div className="rounded-md bg-accent p-2 text-sm">
+              3. Test your integration
+            </div>
+            <p className="text-muted-foreground text-sm mb-3">
+              Try out your widget on a demo website before implementing it on your site.
+            </p>
+            <Button 
+              onClick={handlePreview}
+              className="w-full gap-2"
+              variant="outline"
+            >
+              <ExternalLinkIcon className="size-4" />
+              Preview Integration
+            </Button>
           </div>
         </div>
       </DialogContent>
