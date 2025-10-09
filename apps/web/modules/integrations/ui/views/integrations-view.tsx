@@ -9,6 +9,7 @@ import { CopyIcon } from "lucide-react";
 import { toast } from "sonner";
 import { INTEGRATIONS, IntegrationId } from "../../constants";
 import { useState } from "react";
+import {createScript} from "../../utils";
 
 import {
   Dialog,
@@ -26,24 +27,24 @@ export const IntegrationsView = () => {
   const [selectedSnippet, setSelectedSnippet] = useState("");
   const { organization } = useOrganization();
 
-  // Add the missing createScript function
-  const createScript = (integrationId: IntegrationId, orgId: string): string => {
-    // This is just an example - adjust based on your actual script needs
-    return `
-      <script>
-        window.ChatBoxConfig = {
-          organizationId: "${orgId}",
-          integration: "${integrationId}"
-        };
-        (function() {
-          var script = document.createElement('script');
-          script.src = 'https://your-domain.com/chatbox.js';
-          script.async = true;
-          document.head.appendChild(script);
-        })();
-      </script>
-    `.trim();
-  };
+  // // Add the missing createScript function
+  // const createScript = (integrationId: IntegrationId, orgId: string): string => {
+  //   // This is just an example - adjust based on your actual script needs
+  //   return `
+  //     <script>
+  //       window.ChatBoxConfig = {
+  //         organizationId: "${orgId}", 
+  //         integration: "${integrationId}"
+  //       };
+  //       (function() {
+  //         var script = document.createElement('script');
+  //         script.src = 'https://your-domain.com/chatbox.js';
+  //         script.async = true;
+  //         document.head.appendChild(script);
+  //       })();
+  //     </script>
+  //   `.trim();
+  // };
 
   const handleIntegrationClick = (integrationId: IntegrationId) => {
     if (!organization) {
