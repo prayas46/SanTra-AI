@@ -194,11 +194,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Documentation**: [docs.santra-ai.com](https://docs.santra-ai.com)
-- **Issues**: [GitHub Issues](https://github.com/your-org/SanTra-AI/issues)
-- **Email**: support@santra-ai.com
-- **Discord**: [Join our community](https://discord.gg/santra-ai)
-
 ---
 
 **Built with ❤️ for the future of customer support**
