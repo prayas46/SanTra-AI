@@ -5,6 +5,7 @@ import { WidgetAuthScreen } from "@/modules/widget/ui/screens/widget-auth-screen
 import { screenAtom } from "@/modules/widget/atoms/widget-atoms";
 import { WidgetErrorScreen } from "@/modules/widget/ui/screens/widget-error-screen";
 import { WidgetLoadingScreen } from "@/modules/widget/ui/screens/widget-loading-screen";
+import { WidgetLanguageScreen } from "@/modules/widget/ui/screens/widget-language-screen";
 import { WidgetSelectionScreen } from "@/modules/widget/ui/screens/widget-selection-screen";
 import { WidgetChatScreen } from "@/modules/widget/ui/screens/widget-chat-screen";
 import { WidgetVoiceScreen } from "@/modules/widget/ui/screens/widget-voice-screen";
@@ -19,6 +20,7 @@ export const WidgetView = ({ organizationId }: Props) => {
     const screenComponents= {
         error:<WidgetErrorScreen/>,
         loading: <WidgetLoadingScreen organizationId={organizationId}/>,
+        language: <WidgetLanguageScreen />,
         auth: <WidgetAuthScreen />,
         selection: <WidgetSelectionScreen/>,
         voice: <WidgetVoiceScreen />,

@@ -1,0 +1,103 @@
+{
+  "common": {
+    "welcome": "স্বাগতম",
+    "hello": "নমস্কার",
+    "loading": "লোড হচ্ছে...",
+    "error": "ত্রুটি",
+    "success": "সফলতা",
+    "cancel": "বাতিল",
+    "confirm": "নিশ্চিত করুন",
+    "save": "সংরক্ষণ",
+    "delete": "মুছে ফেলুন",
+    "edit": "সম্পাদনা",
+    "close": "বন্ধ করুন",
+    "search": "খুঁজুন",
+    "filter": "ফিল্টার",
+    "settings": "সেটিংস",
+    "logout": "লগ আউট",
+    "login": "লগ ইন",
+    "signUp": "সাইন আপ",
+    "back": "পিছনে",
+    "next": "পরবর্তী",
+    "previous": "পূর্ববর্তী",
+    "submit": "জমা দিন"
+  },
+  "dashboard": {
+    "title": "ড্যাশবোর্ড",
+    "overview": "সংক্ষিপ্ত বিবরণ",
+    "conversations": "কথোপকথন",
+    "analytics": "বিশ্লেষণ",
+    "integrations": "ইন্টিগ্রেশন",
+    "customization": "কাস্টমাইজেশন",
+    "files": "ফাইলসমূহ",
+    "noConversations": "এখনও কোন কথোপকথন নেই",
+    "activeConversations": "সক্রিয় কথোপকথন",
+    "resolvedConversations": "সমাধান করা কথোপকথন",
+    "escalatedConversations": "বৃদ্ধি করা কথোপকথন"
+  },
+  "chat": {
+    "title": "চ্যাট",
+    "typeMessage": "আপনার বার্তা টাইপ করুন...",
+    "send": "পাঠান",
+    "startConversation": "কথোপকথন শুরু করুন",
+    "endConversation": "কথোপকথন শেষ করুন",
+    "chatWith": "{name} এর সাথে চ্যাট",
+    "assistant": "সহায়ক",
+    "user": "ব্যবহারকারী",
+    "thinking": "চিন্তা করছি...",
+    "messageSent": "বার্তা পাঠানো হয়েছে",
+    "messageFailed": "বার্তা পাঠাতে ব্যর্থ",
+    "translateConversation": "কথোপকথন অনুবাদ করুন",
+    "originalLanguage": "মূল ভাষা",
+    "translatedTo": "{language} এ অনুবাদিত",
+    "autoTranslate": "স্বয়ংক্রিয় বার্তা অনুবাদ"
+  },
+  "widget": {
+    "greeting": "নমস্কার! আজ আমি কিভাবে আপনাকে সাহায্য করতে পারি?",
+    "poweredBy": "SanTra-AI দ্বারা চালিত",
+    "suggestions": {
+      "suggestion1": "আমি কিভাবে শুরু করব?",
+      "suggestion2": "আপনার সেবা সম্পর্কে বলুন",
+      "suggestion3": "আমার অ্যাকাউন্টে সাহায্য প্রয়োজন"
+    },
+    "inputPlaceholder": "আপনার বার্তা টাইপ করুন...",
+    "minimizeChat": "চ্যাট ছোট করুন",
+    "maximizeChat": "চ্যাট খুলুন",
+    "newMessage": "নতুন বার্তা",
+    "connectionLost": "সংযোগ হারিয়ে গেছে। পুনঃসংযোগ করার চেষ্টা করছি...",
+    "connectionRestored": "সংযোগ পুনরুদ্ধার হয়েছে"
+  },
+  "languages": {
+    "selectLanguage": "ভাষা নির্বাচন করুন",
+    "currentLanguage": "বর্তমান ভাষা",
+    "changeLanguage": "ভাষা পরিবর্তন করুন",
+    "autoDetect": "স্বয়ংক্রিয় সনাক্তকরণ",
+    "translationEnabled": "অনুবাদ সক্রিয়",
+    "translationDisabled": "অনুবাদ নিষ্ক্রিয়"
+  },
+  "settings": {
+    "title": "সেটিংস",
+    "profile": "প্রোফাইল",
+    "organization": "সংস্থা",
+    "appearance": "চেহারা",
+    "notifications": "বিজ্ঞপ্তি",
+    "language": "ভাষা এবং অঞ্চল",
+    "privacy": "গোপনীয়তা",
+    "security": "নিরাপত্তা"
+  },
+  "errors": {
+    "generic": "কিছু ভুল হয়েছে",
+    "network": "নেটওয়ার্ক ত্রুটি। আপনার সংযোগ পরীক্ষা করুন",
+    "unauthorized": "অননুমোদিত প্রবেশ",
+    "notFound": "পেজ পাওয়া যায়নি",
+    "serverError": "সার্ভার ত্রুটি। দয়া করে পরে চেষ্টা করুন",
+    "translationFailed": "অনুবাদ ব্যর্থ। মূল বার্তা দেখাচ্ছে"
+  },
+  "success": {
+    "saved": "সফলভাবে সংরক্ষিত",
+    "deleted": "সফলভাবে মুছে ফেলা হয়েছে",
+    "updated": "সফলভাবে আপডেট করা হয়েছে",
+    "sent": "সফলভাবে পাঠানো হয়েছে",
+    "copied": "ক্লিপবোর্ডে কপি করা হয়েছে"
+  }
+}

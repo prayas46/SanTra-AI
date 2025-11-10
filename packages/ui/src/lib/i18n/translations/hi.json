@@ -1,0 +1,103 @@
+{
+  "common": {
+    "welcome": "स्वागत है",
+    "hello": "नमस्ते",
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफलता",
+    "cancel": "रद्द करें",
+    "confirm": "पुष्टि करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "close": "बंद करें",
+    "search": "खोजें",
+    "filter": "फ़िल्टर",
+    "settings": "सेटिंग्स",
+    "logout": "लॉग आउट",
+    "login": "लॉग इन",
+    "signUp": "साइन अप",
+    "back": "वापस",
+    "next": "अगला",
+    "previous": "पिछला",
+    "submit": "जमा करें"
+  },
+  "dashboard": {
+    "title": "डैशबोर्ड",
+    "overview": "सिंहावलोकन",
+    "conversations": "बातचीत",
+    "analytics": "विश्लेषण",
+    "integrations": "एकीकरण",
+    "customization": "अनुकूलन",
+    "files": "फाइलें",
+    "noConversations": "अभी तक कोई बातचीत नहीं",
+    "activeConversations": "सक्रिय बातचीत",
+    "resolvedConversations": "हल की गई बातचीत",
+    "escalatedConversations": "बढ़ाई गई बातचीत"
+  },
+  "chat": {
+    "title": "चैट",
+    "typeMessage": "अपना संदेश लिखें...",
+    "send": "भेजें",
+    "startConversation": "बातचीत शुरू करें",
+    "endConversation": "बातचीत समाप्त करें",
+    "chatWith": "{name} के साथ चैट",
+    "assistant": "सहायक",
+    "user": "उपयोगकर्ता",
+    "thinking": "सोच रहा हूं...",
+    "messageSent": "संदेश भेजा गया",
+    "messageFailed": "संदेश भेजने में विफल",
+    "translateConversation": "बातचीत अनुवाद करें",
+    "originalLanguage": "मूल भाषा",
+    "translatedTo": "{language} में अनुवादित",
+    "autoTranslate": "संदेशों का स्वत: अनुवाद"
+  },
+  "widget": {
+    "greeting": "नमस्ते! आज मैं आपकी कैसे मदद कर सकता हूं?",
+    "poweredBy": "SanTra-AI द्वारा संचालित",
+    "suggestions": {
+      "suggestion1": "मैं कैसे शुरू करूं?",
+      "suggestion2": "अपनी सेवाओं के बारे में बताएं",
+      "suggestion3": "मुझे अपने खाते में मदद चाहिए"
+    },
+    "inputPlaceholder": "अपना संदेश लिखें...",
+    "minimizeChat": "चैट छोटा करें",
+    "maximizeChat": "चैट खोलें",
+    "newMessage": "नया संदेश",
+    "connectionLost": "कनेक्शन खो गया। पुनः कनेक्ट करने का प्रयास...",
+    "connectionRestored": "कनेक्शन बहाल"
+  },
+  "languages": {
+    "selectLanguage": "भाषा चुनें",
+    "currentLanguage": "वर्तमान भाषा",
+    "changeLanguage": "भाषा बदलें",
+    "autoDetect": "स्वत: पहचान",
+    "translationEnabled": "अनुवाद सक्षम",
+    "translationDisabled": "अनुवाद अक्षम"
+  },
+  "settings": {
+    "title": "सेटिंग्स",
+    "profile": "प्रोफ़ाइल",
+    "organization": "संगठन",
+    "appearance": "दिखावट",
+    "notifications": "सूचनाएं",
+    "language": "भाषा और क्षेत्र",
+    "privacy": "गोपनीयता",
+    "security": "सुरक्षा"
+  },
+  "errors": {
+    "generic": "कुछ गलत हो गया",
+    "network": "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें",
+    "unauthorized": "अनधिकृत पहुंच",
+    "notFound": "पृष्ठ नहीं मिला",
+    "serverError": "सर्वर त्रुटि। कृपया बाद में प्रयास करें",
+    "translationFailed": "अनुवाद विफल। मूल संदेश दिखा रहे हैं"
+  },
+  "success": {
+    "saved": "सफलतापूर्वक सहेजा गया",
+    "deleted": "सफलतापूर्वक हटाया गया",
+    "updated": "सफलतापूर्वक अपडेट किया गया",
+    "sent": "सफलतापूर्वक भेजा गया",
+    "copied": "क्लिपबोर्ड पर कॉपी किया गया"
+  }
+}

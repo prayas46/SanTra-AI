@@ -20,6 +20,8 @@ import { useInfiniteScroll } from "@workspace/ui/hooks/use-infinite-scroll";
 import { InfiniteScrollTrigger } from "@workspace/ui/components/infinite-scroll-trigger";
 import { useMemo, useEffect, useState, useRef, useCallback } from "react";
 import { cn } from "@workspace/ui/lib/utils";
+import { SimpleLanguageButton } from "../components/simple-language-button";
+import { useWidgetTranslation } from "@/hooks/use-widget-translation";
 
 import {
   AIConversation,
@@ -45,6 +47,7 @@ const formSchema = z.object({
 });
 
 export const WidgetChatScreen = () => {
+  const { t } = useWidgetTranslation();
   const setScreen = useSetAtom(screenAtom);
   const setConversationId = useSetAtom(conversationIdAtom);
   const setShowSuggestions = useSetAtom(showSuggestionsAtom);
@@ -212,21 +215,30 @@ export const WidgetChatScreen = () => {
             </div>
             <div>
               <h2 className="font-semibold text-slate-900 dark:text-slate-100 text-sm">
-                AI Assistant
+                {t('aiAssistant')}
               </h2>
               <div className="flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                <span className="text-xs text-slate-500 dark:text-slate-400">Online & ready to help</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400">{t('onlineReady')}</span>
               </div>
             </div>
           </div>
         </div>
-        <Button
+        <Button 
+          onClick={() => {
+            const current = localStorage.getItem('widgetLanguage') || 'en';
+            const next = current === 'en' ? 'hi' : current === 'hi' ? 'bn' : 'en';
+            localStorage.setItem('widgetLanguage', next);
+            window.location.reload();
+          }}
+          variant="ghost" 
           size="icon"
-          variant="ghost"
-          className="h-9 w-9 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200"
+          className="h-9 w-9 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"
+          title="Change Language"
         >
-          <MenuIcon className="h-4 w-4" />
+          <span className="text-xl">
+            {(localStorage.getItem('widgetLanguage') === 'hi' || localStorage.getItem('widgetLanguage') === 'bn') ? '🇮🇳' : '🇬🇧'}
+          </span>
         </Button>
       </WidgetHeader>
 
@@ -258,10 +270,10 @@ export const WidgetChatScreen = () => {
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-3">
-                  👋 Hello! How can I help you today?
+                  👋 {t('hello')}
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed text-sm">
-                  I'm your AI assistant, ready to help with appointments, insurance questions, and more. Choose a quick action below or type your message.
+                  {t('aiAssistantDesc')}
                 </p>
               </div>
             )}
@@ -303,7 +315,7 @@ export const WidgetChatScreen = () => {
                         </div>
                       </div>
                       <div className={`text-xs text-slate-400 dark:text-slate-500 mt-1.5 px-1 opacity-0 group-hover:opacity-100 transition-all duration-200`}>
-                        {isLast ? "Just now" : "Earlier"}
+                        {isLast ? t('justNow') : t('earlier')}
                       </div>
                     </div>
 

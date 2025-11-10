@@ -18,8 +18,11 @@ import { useSetAtom, useAtomValue, useAtom } from "jotai";
 import { screenAtom, organizationIdAtom,errorMessageAtom, contactSessionIdAtomFamily,conversationIdAtom, widgetSettingsAtom, hasVapiSecretsAtom } from "../../atoms/widget-atoms";
 import { WidgetFooter } from "../components/widget-footer";
 import { cn } from "@workspace/ui/lib/utils";
+import { useWidgetTranslation } from "@/hooks/use-widget-translation";
+import { SimpleLanguageButton } from "../components/simple-language-button";
 
 export const WidgetSelectionScreen = () => {
+  const { t } = useWidgetTranslation();
   const setScreen = useSetAtom(screenAtom);
   const setErrorMessage = useSetAtom(errorMessageAtom);
   const setConversationId = useSetAtom(conversationIdAtom);
@@ -64,8 +67,8 @@ export const WidgetSelectionScreen = () => {
     {
       id: "chat",
       icon: MessageSquareTextIcon,
-      label: "Start chat",
-      description: "Chat with our AI assistant",
+      label: t('startChat'),
+      description: t('chatDescription'),
       onClick: handleNewConversation,
       disabled: isPending,
       color: "text-blue-500",
@@ -74,8 +77,8 @@ export const WidgetSelectionScreen = () => {
     {
       id: "voice",
       icon: MicIcon,
-      label: "Start Voice Call",
-      description: "Talk to our voice AI",
+      label: t('startVoice'),
+      description: t('voiceDescription'),
       onClick: () => setScreen("voice"),
       disabled: isPending || !(hasVapiSecrets && widgetSettings?.vapiSettings?.assistantId),
       color: "text-green-500",
@@ -84,8 +87,8 @@ export const WidgetSelectionScreen = () => {
     {
       id: "contact",
       icon: PhoneIcon,
-      label: "Call us",
-      description: "Speak with a human agent",
+      label: t('callUs'),
+      description: t('contactDescription'),
       onClick: () => setScreen("contact"),
       disabled: isPending || !(hasVapiSecrets && widgetSettings?.vapiSettings?.phoneNumber),
       color: "text-purple-500",
@@ -96,16 +99,34 @@ export const WidgetSelectionScreen = () => {
   return (
     <>
       <WidgetHeader>
-        <div className="flex flex-col justify-between gap-y-2 px-4 py-6">
-          <div className="flex items-center gap-2">
-            <SparklesIcon className="size-5 text-yellow-500" />
-            <p className="text-2xl font-bold text-gray-900">
-              Hi there! 👋
+        <div className="flex items-center justify-between px-4 py-6">
+          <div className="flex flex-col gap-y-2">
+            <div className="flex items-center gap-2">
+              <SparklesIcon className="size-5 text-yellow-500" />
+              <p className="text-2xl font-bold text-gray-900">
+                {t('greeting')}
+              </p>
+            </div>
+            <p className="text-lg text-gray-600 font-medium">
+              {t('greeting')}
             </p>
           </div>
-          <p className="text-lg text-gray-600 font-medium">
-            How would you like to get help today?
-          </p>
+          <Button 
+            onClick={() => {
+              const current = localStorage.getItem('widgetLanguage') || 'en';
+              const next = current === 'en' ? 'hi' : current === 'hi' ? 'bn' : 'en';
+              localStorage.setItem('widgetLanguage', next);
+              window.location.reload();
+            }}
+            variant="ghost" 
+            size="icon"
+            className="h-9 w-9 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"
+            title="Change Language"
+          >
+            <span className="text-xl">
+              {(localStorage.getItem('widgetLanguage') === 'hi' || localStorage.getItem('widgetLanguage') === 'bn') ? '🇮🇳' : '🇬🇧'}
+            </span>
+          </Button>
         </div>
       </WidgetHeader>
       
@@ -155,17 +176,17 @@ export const WidgetSelectionScreen = () => {
         <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-100">
           <div className="flex items-center gap-2 mb-2">
             <BotIcon className="size-4 text-blue-600" />
-            <h3 className="font-semibold text-blue-900 text-sm">Quick Help</h3>
+            <h3 className="font-semibold text-blue-900 text-sm">{t('quickHelp')}</h3>
           </div>
           <p className="text-xs text-blue-700">
-            Our AI assistant is available 24/7 to help with any questions you might have.
+            {t('quickHelpDesc')}
           </p>
         </div>
         
         {/* Support status */}
         <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          <span className="text-xs text-gray-600">Support available now</span>
+          <span className="text-xs text-gray-600">{t('supportAvailable')}</span>
         </div>
       </div>
       

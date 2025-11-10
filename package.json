@@ -9,6 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@types/negotiator": "^0.6.4",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "prettier": "^3.6.2",
@@ -36,6 +37,7 @@
   "dependencies": {
     "@convex-dev/agent": "^0.1.18",
     "@convex-dev/rag": "^0.3.5",
+    "@formatjs/intl-localematcher": "^0.6.2",
     "@hookform/resolvers": "^5.2.1",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
@@ -46,6 +48,9 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@xenova/transformers": "^2.17.2",
     "convex": "^1.25.4",
-    "react-hook-form": "^7.62.0"
+    "negotiator": "^1.0.0",
+    "next-intl": "^4.3.12",
+    "react-hook-form": "^7.62.0",
+    "react-intl-universal": "^2.13.4"
   }
 }

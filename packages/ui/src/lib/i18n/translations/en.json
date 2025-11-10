@@ -1,0 +1,103 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "hello": "Hello",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "signUp": "Sign Up",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "overview": "Overview",
+    "conversations": "Conversations",
+    "analytics": "Analytics",
+    "integrations": "Integrations",
+    "customization": "Customization",
+    "files": "Files",
+    "noConversations": "No conversations yet",
+    "activeConversations": "Active Conversations",
+    "resolvedConversations": "Resolved Conversations",
+    "escalatedConversations": "Escalated Conversations"
+  },
+  "chat": {
+    "title": "Chat",
+    "typeMessage": "Type your message...",
+    "send": "Send",
+    "startConversation": "Start a conversation",
+    "endConversation": "End conversation",
+    "chatWith": "Chat with {name}",
+    "assistant": "Assistant",
+    "user": "User",
+    "thinking": "Thinking...",
+    "messageSent": "Message sent",
+    "messageFailed": "Failed to send message",
+    "translateConversation": "Translate conversation",
+    "originalLanguage": "Original language",
+    "translatedTo": "Translated to {language}",
+    "autoTranslate": "Auto-translate messages"
+  },
+  "widget": {
+    "greeting": "Hi! How can I help you today?",
+    "poweredBy": "Powered by SanTra-AI",
+    "suggestions": {
+      "suggestion1": "How can I get started?",
+      "suggestion2": "Tell me about your services",
+      "suggestion3": "I need help with my account"
+    },
+    "inputPlaceholder": "Type your message...",
+    "minimizeChat": "Minimize chat",
+    "maximizeChat": "Open chat",
+    "newMessage": "New message",
+    "connectionLost": "Connection lost. Trying to reconnect...",
+    "connectionRestored": "Connection restored"
+  },
+  "languages": {
+    "selectLanguage": "Select Language",
+    "currentLanguage": "Current Language",
+    "changeLanguage": "Change Language",
+    "autoDetect": "Auto-detect",
+    "translationEnabled": "Translation enabled",
+    "translationDisabled": "Translation disabled"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "organization": "Organization",
+    "appearance": "Appearance",
+    "notifications": "Notifications",
+    "language": "Language & Region",
+    "privacy": "Privacy",
+    "security": "Security"
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "network": "Network error. Please check your connection",
+    "unauthorized": "Unauthorized access",
+    "notFound": "Page not found",
+    "serverError": "Server error. Please try again later",
+    "translationFailed": "Translation failed. Showing original message"
+  },
+  "success": {
+    "saved": "Successfully saved",
+    "deleted": "Successfully deleted",
+    "updated": "Successfully updated",
+    "sent": "Successfully sent",
+    "copied": "Copied to clipboard"
+  }
+}

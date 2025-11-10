@@ -1,0 +1,103 @@
+{
+  "common": {
+    "welcome": "Bienvenido",
+    "hello": "Hola",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
+    "login": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar"
+  },
+  "dashboard": {
+    "title": "Panel de control",
+    "overview": "Resumen",
+    "conversations": "Conversaciones",
+    "analytics": "Analítica",
+    "integrations": "Integraciones",
+    "customization": "Personalización",
+    "files": "Archivos",
+    "noConversations": "No hay conversaciones todavía",
+    "activeConversations": "Conversaciones activas",
+    "resolvedConversations": "Conversaciones resueltas",
+    "escalatedConversations": "Conversaciones escaladas"
+  },
+  "chat": {
+    "title": "Chat",
+    "typeMessage": "Escribe tu mensaje...",
+    "send": "Enviar",
+    "startConversation": "Iniciar conversación",
+    "endConversation": "Finalizar conversación",
+    "chatWith": "Chat con {name}",
+    "assistant": "Asistente",
+    "user": "Usuario",
+    "thinking": "Pensando...",
+    "messageSent": "Mensaje enviado",
+    "messageFailed": "Error al enviar mensaje",
+    "translateConversation": "Traducir conversación",
+    "originalLanguage": "Idioma original",
+    "translatedTo": "Traducido a {language}",
+    "autoTranslate": "Traducir mensajes automáticamente"
+  },
+  "widget": {
+    "greeting": "¡Hola! ¿Cómo puedo ayudarte hoy?",
+    "poweredBy": "Desarrollado por SanTra-AI",
+    "suggestions": {
+      "suggestion1": "¿Cómo puedo empezar?",
+      "suggestion2": "Cuéntame sobre sus servicios",
+      "suggestion3": "Necesito ayuda con mi cuenta"
+    },
+    "inputPlaceholder": "Escribe tu mensaje...",
+    "minimizeChat": "Minimizar chat",
+    "maximizeChat": "Abrir chat",
+    "newMessage": "Nuevo mensaje",
+    "connectionLost": "Conexión perdida. Intentando reconectar...",
+    "connectionRestored": "Conexión restaurada"
+  },
+  "languages": {
+    "selectLanguage": "Seleccionar idioma",
+    "currentLanguage": "Idioma actual",
+    "changeLanguage": "Cambiar idioma",
+    "autoDetect": "Detección automática",
+    "translationEnabled": "Traducción activada",
+    "translationDisabled": "Traducción desactivada"
+  },
+  "settings": {
+    "title": "Configuración",
+    "profile": "Perfil",
+    "organization": "Organización",
+    "appearance": "Apariencia",
+    "notifications": "Notificaciones",
+    "language": "Idioma y región",
+    "privacy": "Privacidad",
+    "security": "Seguridad"
+  },
+  "errors": {
+    "generic": "Algo salió mal",
+    "network": "Error de red. Por favor, verifica tu conexión",
+    "unauthorized": "Acceso no autorizado",
+    "notFound": "Página no encontrada",
+    "serverError": "Error del servidor. Por favor, intenta más tarde",
+    "translationFailed": "Traducción fallida. Mostrando mensaje original"
+  },
+  "success": {
+    "saved": "Guardado exitosamente",
+    "deleted": "Eliminado exitosamente",
+    "updated": "Actualizado exitosamente",
+    "sent": "Enviado exitosamente",
+    "copied": "Copiado al portapapeles"
+  }
+}

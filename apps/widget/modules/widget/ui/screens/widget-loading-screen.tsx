@@ -158,7 +158,19 @@ useEffect(() => {
   useEffect(() => {
     if (step !== "done") return;
     const hasValidSession = contactSessionId && sessionValid;
-    setScreen(hasValidSession ? "selection" : "auth");
+    
+    // Check if language has been selected before
+    const hasLanguagePreference = localStorage.getItem("widgetLanguage");
+    
+    if (!hasValidSession) {
+      setScreen("auth");
+    } else if (!hasLanguagePreference) {
+      // First time user - show language selection
+      setScreen("language");
+    } else {
+      // Returning user - go to selection
+      setScreen("selection");
+    }
   }, [step, contactSessionId, sessionValid, setScreen]);
 
   return (

@@ -1,0 +1,103 @@
+{
+  "common": {
+    "welcome": "வரவேற்பு",
+    "hello": "வணக்கம்",
+    "loading": "ஏற்றுகிறது...",
+    "error": "பிழை",
+    "success": "வெற்றி",
+    "cancel": "ரத்துசெய்",
+    "confirm": "உறுதிசெய்",
+    "save": "சேமி",
+    "delete": "நீக்கு",
+    "edit": "திருத்து",
+    "close": "மூடு",
+    "search": "தேடு",
+    "filter": "வடிகட்டி",
+    "settings": "அமைப்புகள்",
+    "logout": "வெளியேறு",
+    "login": "உள்நுழை",
+    "signUp": "பதிவு செய்",
+    "back": "பின்",
+    "next": "அடுத்து",
+    "previous": "முந்தைய",
+    "submit": "சமர்ப்பி"
+  },
+  "dashboard": {
+    "title": "டாஷ்போர்டு",
+    "overview": "மேலோட்டம்",
+    "conversations": "உரையாடல்கள்",
+    "analytics": "பகுப்பாய்வு",
+    "integrations": "ஒருங்கிணைப்புகள்",
+    "customization": "தனிப்பயனாக்கம்",
+    "files": "கோப்புகள்",
+    "noConversations": "இன்னும் உரையாடல்கள் இல்லை",
+    "activeConversations": "செயலில் உள்ள உரையாடல்கள்",
+    "resolvedConversations": "தீர்க்கப்பட்ட உரையாடல்கள்",
+    "escalatedConversations": "முன்னேற்றப்பட்ட உரையாடல்கள்"
+  },
+  "chat": {
+    "title": "அரட்டை",
+    "typeMessage": "உங்கள் செய்தியை தட்டச்சு செய்யவும்...",
+    "send": "அனுப்பு",
+    "startConversation": "உரையாடலை தொடங்கு",
+    "endConversation": "உரையாடலை முடி",
+    "chatWith": "{name} உடன் அரட்டை",
+    "assistant": "உதவியாளர்",
+    "user": "பயனர்",
+    "thinking": "சிந்திக்கிறேன்...",
+    "messageSent": "செய்தி அனுப்பப்பட்டது",
+    "messageFailed": "செய்தி அனுப்ப முடியவில்லை",
+    "translateConversation": "உரையாடலை மொழிபெயர்",
+    "originalLanguage": "அசல் மொழி",
+    "translatedTo": "{language} க்கு மொழிபெயர்க்கப்பட்டது",
+    "autoTranslate": "செய்திகளை தானாக மொழிபெயர்"
+  },
+  "widget": {
+    "greeting": "வணக்கம்! இன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?",
+    "poweredBy": "SanTra-AI மூலம் இயக்கப்படுகிறது",
+    "suggestions": {
+      "suggestion1": "நான் எப்படி தொடங்குவது?",
+      "suggestion2": "உங்கள் சேவைகளைப் பற்றி சொல்லுங்கள்",
+      "suggestion3": "எனது கணக்கில் உதவி தேவை"
+    },
+    "inputPlaceholder": "உங்கள் செய்தியை தட்டச்சு செய்யவும்...",
+    "minimizeChat": "அரட்டையை சிறிதாக்கு",
+    "maximizeChat": "அரட்டையை திற",
+    "newMessage": "புதிய செய்தி",
+    "connectionLost": "இணைப்பு இழந்தது. மீண்டும் இணைக்க முயற்சிக்கிறது...",
+    "connectionRestored": "இணைப்பு மீட்டெடுக்கப்பட்டது"
+  },
+  "languages": {
+    "selectLanguage": "மொழியை தேர்ந்தெடுக்கவும்",
+    "currentLanguage": "தற்போதைய மொழி",
+    "changeLanguage": "மொழியை மாற்று",
+    "autoDetect": "தானாக கண்டறி",
+    "translationEnabled": "மொழிபெயர்ப்பு இயக்கப்பட்டது",
+    "translationDisabled": "மொழிபெயர்ப்பு முடக்கப்பட்டது"
+  },
+  "settings": {
+    "title": "அமைப்புகள்",
+    "profile": "சுயவிவரம்",
+    "organization": "நிறுவனம்",
+    "appearance": "தோற்றம்",
+    "notifications": "அறிவிப்புகள்",
+    "language": "மொழி மற்றும் பிராந்தியம்",
+    "privacy": "தனியுரிமை",
+    "security": "பாதுகாப்பு"
+  },
+  "errors": {
+    "generic": "ஏதோ தவறு நடந்தது",
+    "network": "நெட்வொர்க் பிழை. உங்கள் இணைப்பை சரிபார்க்கவும்",
+    "unauthorized": "அங்கீகரிக்கப்படாத அணுகல்",
+    "notFound": "பக்கம் கிடைக்கவில்லை",
+    "serverError": "சேவையக பிழை. பின்னர் முயற்சிக்கவும்",
+    "translationFailed": "மொழிபெயர்ப்பு தோல்வி. அசல் செய்தியை காண்பிக்கிறது"
+  },
+  "success": {
+    "saved": "வெற்றிகரமாக சேமிக்கப்பட்டது",
+    "deleted": "வெற்றிகரமாக நீக்கப்பட்டது",
+    "updated": "வெற்றிகரமாக புதுப்பிக்கப்பட்டது",
+    "sent": "வெற்றிகரமாக அனுப்பப்பட்டது",
+    "copied": "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
+  }
+}

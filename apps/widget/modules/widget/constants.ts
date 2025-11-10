@@ -1,6 +1,7 @@
 export const WIDGET_SCREENS =[
     "error",
     "loading",
+    "language",
     "selection",
     "voice",
     "auth",

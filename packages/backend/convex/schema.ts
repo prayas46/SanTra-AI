@@ -61,6 +61,7 @@ export default defineSchema({
       cookieEnabled: v.optional(v.boolean()),
       referrer: v.optional(v.string()),
       currentUrl: v.optional(v.string()),
+      preferredLanguage: v.optional(v.string()),
   }))
    
 })
@@ -70,5 +71,15 @@ export default defineSchema({
 users: defineTable({
   name: v.string(),
 }),
+
+translations: defineTable({
+  originalText: v.string(),
+  sourceLang: v.string(),
+  targetLang: v.string(),
+  translatedText: v.string(),
+  provider: v.union(v.literal("openai"), v.literal("google"), v.literal("manual")),
+  confidence: v.optional(v.number()),
+})
+.index("by_text_and_langs", ["originalText", "sourceLang", "targetLang"]),
 
 });
