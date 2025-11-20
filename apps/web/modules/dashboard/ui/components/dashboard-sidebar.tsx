@@ -9,7 +9,6 @@ import {
   Mic,
   PaletteIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -20,88 +19,58 @@ import {
   SidebarMenuItem,
   SidebarMenu,
   SidebarGroup,
-  SidebarRail,
-  SidebarMenuButton,
   SidebarGroupLabel,
   SidebarGroupContent,
+  SidebarMenuButton,
+  SidebarRail,
 } from "@workspace/ui/components/sidebar";
 import { cn } from "@workspace/ui/lib/utils";
 
 const customerSupportItems = [
-  {
-    title: "Conversations",
-    url: "/conversations",
-    icon: InboxIcon,
-  },
-  {
-    title: "Knowledge Base",
-    url: "/files",
-    icon: LibraryBigIcon,
-  },
+  { title: "Conversations", url: "/conversations", icon: InboxIcon },
+  { title: "Knowledge Base", url: "/files", icon: LibraryBigIcon },
 ];
+
 const configurationItems = [
-    {
-    title: "Widget Customization",
-    url: "/customization",
-    icon: PaletteIcon,
-    },
-    { title: "Integrations",
-    url: "/integrations",
-    icon: LayoutDashboardIcon,
-    },
-     { title: "Voice Assistant",
-    url: "/plugins/vapi",
-    icon: Mic,
-    },
+  { title: "Widget Customization", url: "/customization", icon: PaletteIcon },
+  { title: "Integrations", url: "/integrations", icon: LayoutDashboardIcon },
+  { title: "Voice Assistant", url: "/plugins/vapi", icon: Mic },
 ];
 
 const accountItems = [
-    {
-    title: "Plans & Billing",
-    url : "/billing",
-    icon: CreditCardIcon,
-    },
-    
-         
-    ];
+  { title: "Plans & Billing", url: "/billing", icon: CreditCardIcon },
+];
 
 export const DashboardSidebar = () => {
   const pathname = usePathname();
-  const isActive = (url: string) => {
-    if (url === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(url);
-  };
+  const isActive = (url: string) =>
+    url === "/" ? pathname === "/" : pathname.startsWith(url);
+
   return (
-    <Sidebar
-      className="h-screen w-64 bg-gray-900 text-white group"
-      collapsible="icon"
-    >
+    <Sidebar className="h-screen w-64 bg-blue-50 text-blue-900 group">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild size="lg">
-              <OrganizationSwitcher 
-              hidePersonal 
-              skipInvitationScreen 
-              appearance={{
-                elements: {
-                    rootBox:"w-full! h-8",
+              <OrganizationSwitcher
+                hidePersonal
+                skipInvitationScreen
+                appearance={{
+                  elements: {
+                    rootBox: "w-full! h-8",
                     avatarBox: "size-4! rounded-sm!",
-                    organizationSwitcherTrigger: "w-full! justify-start! group-data-[colapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!",
-                    organizationPreview: "group-data-[collapsible=icon]:justify-center! gap-2!",
-                    organizationPreviewTextContainer: "group-data-[collapsible=icon]:hidden! text-xs! font-medium! text-sidebar-foreground!",
-                    organizationSwitcherTriggerIcon: "group-data-[collapsible=icon]:hidden! ml-auto! text-sidebar-foreground!"
-                }
-              }}
+                    organizationSwitcherTrigger: "w-full! justify-start!",
+                    organizationPreviewTextContainer: "text-xs! font-medium! text-blue-900!",
+                  },
+                }}
               />
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent>
-        {/*Customer support*/}
+        {/* Customer Support */}
         <SidebarGroup>
           <SidebarGroupLabel>Customer Support</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -112,15 +81,15 @@ export const DashboardSidebar = () => {
                     asChild
                     isActive={isActive(item.url)}
                     className={cn(
-                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
+                      isActive(item.url) &&
+                        "bg-gradient-to-b from-blue-200 to-blue-300 text-blue-900 hover:to-blue-400!"
                     )}
                     tooltip={item.title}
-                    
                   >
                     <Link href={item.url} className="flex items-center gap-3">
-  <item.icon className="w-5 h-5 text-black" />
-  <span className="text-black">{item.title}</span> {/* Add text color here */}
-</Link>
+                      <item.icon className="w-5 h-5 text-blue-900" />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -128,8 +97,7 @@ export const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
-
-        {/*Configuration*/}
+        {/* Configuration */}
         <SidebarGroup>
           <SidebarGroupLabel>Configuration</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -140,15 +108,15 @@ export const DashboardSidebar = () => {
                     asChild
                     isActive={isActive(item.url)}
                     className={cn(
-                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
+                      isActive(item.url) &&
+                        "bg-gradient-to-b from-blue-200 to-blue-300 text-blue-900 hover:to-blue-400!"
                     )}
                     tooltip={item.title}
-                    
                   >
                     <Link href={item.url} className="flex items-center gap-3">
-  <item.icon className="w-5 h-5 text-black" />
-  <span className="text-black">{item.title}</span> {/* Add text color here */}
-</Link>
+                      <item.icon className="w-5 h-5 text-blue-900" />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -156,8 +124,7 @@ export const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
-
-         {/*Account*/}
+        {/* Account */}
         <SidebarGroup>
           <SidebarGroupLabel>Account</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -168,15 +135,15 @@ export const DashboardSidebar = () => {
                     asChild
                     isActive={isActive(item.url)}
                     className={cn(
-                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
+                      isActive(item.url) &&
+                        "bg-gradient-to-b from-blue-200 to-blue-300 text-blue-900 hover:to-blue-400!"
                     )}
                     tooltip={item.title}
-                    
                   >
                     <Link href={item.url} className="flex items-center gap-3">
-  <item.icon className="w-5 h-5 text-black" />
-  <span className="text-black">{item.title}</span> {/* Add text color here */}
-</Link>
+                      <item.icon className="w-5 h-5 text-blue-900" />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -184,28 +151,27 @@ export const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter>
         <SidebarMenu>
-            <SidebarMenuItem>
-                 <UserButton
-                    showName
-                    appearance={{
-                        elements: {
-                            rootBox: "w-full! h-8!",
-                            userButtonTrigger: "w-full! p-2! hover:bg-sidebar-accent! hover:text-sidebar-accent-foreground! group-data-[collapsible=icon]:size-8!group-data-[collapsible=icon]:p-2!",
-                            userButtonBox: "w-full! flex-row-reverse! justify-end! gap-2! group-data-[collapsible=icon]:justify-center! text-sidebar-foreground!",
-                            userButtonOuterIdentifier: "pl-0! group-data-[collapsible=icon]:hidden!",
-                            avatarBox:"size-4!"
-                            
-                        }
-                    }}
-                 />
-             
-            
-                
-            </SidebarMenuItem>
+          <SidebarMenuItem>
+            <UserButton
+              showName
+              appearance={{
+                elements: {
+                  rootBox: "w-full! h-8!",
+                  userButtonTrigger:
+                    "w-full! p-2! hover:bg-blue-200! hover:text-blue-900!",
+                  userButtonBox:
+                    "w-full! flex-row-reverse! justify-end! gap-2! text-blue-900!",
+                  avatarBox: "size-4!",
+                },
+              }}
+            />
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
+
       <SidebarRail />
     </Sidebar>
   );

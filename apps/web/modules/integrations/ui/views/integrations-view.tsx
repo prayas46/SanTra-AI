@@ -1,15 +1,16 @@
-"use client"
+"use client";
 
+import { useState } from "react";
 import { useOrganization } from "@clerk/nextjs";
+import { INTEGRATIONS, IntegrationId } from "../../constants";
+import { createScript } from "../../utils";
+
 import { Button } from "@workspace/ui/components/button";
 import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import { Separator } from "@workspace/ui/components/separator";
-import { CopyIcon, ExternalLinkIcon } from "lucide-react";
 import { toast } from "sonner";
-import { INTEGRATIONS, IntegrationId } from "../../constants";
-import { useState } from "react";
-import {createScript} from "../../utils";
+import { CopyIcon, ExternalLinkIcon } from "lucide-react";
 
 import {
   Dialog,
@@ -19,35 +20,13 @@ import {
   DialogTitle,
 } from "@workspace/ui/components/dialog";
 
-// Remove the problematic Image import from next/image
-// import { Image } from "next/image";
-
 export const IntegrationsView = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedSnippet, setSelectedSnippet] = useState("");
   const { organization } = useOrganization();
 
-  // // Add the missing createScript function
-  // const createScript = (integrationId: IntegrationId, orgId: string): string => {
-  //   // This is just an example - adjust based on your actual script needs
-  //   return `
-  //     <script>
-  //       window.ChatBoxConfig = {
-  //         organizationId: "${orgId}", 
-  //         integration: "${integrationId}"
-  //       };
-  //       (function() {
-  //         var script = document.createElement('script');
-  //         script.src = 'https://your-domain.com/chatbox.js';
-  //         script.async = true;
-  //         document.head.appendChild(script);
-  //       })();
-  //     </script>
-  //   `.trim();
-  // };
-
   const handleIntegrationClick = (integrationId: IntegrationId) => {
-    if (!organization) {
+    if (!organization?.id) {
       toast.error("Organization ID not found");
       return;
     }
@@ -60,9 +39,9 @@ export const IntegrationsView = () => {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(organization?.id ?? "");
-      toast.success("Copied to clipboard");
+      toast.success("Copied!");
     } catch {
-      toast.error("Failed to copy to clipboard")
+      toast.error("Failed to copy");
     }
   };
 
@@ -73,32 +52,29 @@ export const IntegrationsView = () => {
         onOpenChange={setDialogOpen}
         snippet={selectedSnippet}
       />
-      <div className="flex min-h-screen flex-col bg-muted p-8">
-        <div className="mx-auto w-full max-w-screen-md">
+
+      <div className="flex min-h-screen flex-col bg-muted p-10">
+        <div className="mx-auto w-full max-w-screen-lg rounded-xl bg-background p-8 shadow-sm border">
+
           <div className="space-y-2">
-            <h1 className="text-2xl md:text-4xl">Setup and Integrations</h1>
+            <h1 className="text-3xl font-semibold">Setup & Integrations</h1>
             <p className="text-muted-foreground">
-              Choose the integration that&apos;s right for you
+              Connect ChatBox with your website in seconds.
             </p>
           </div>
+
           <div className="mt-8 space-y-6">
             <div className="flex items-center gap-4">
-              <Label className="w-34" htmlFor="organization-id">
-                Organization ID
-              </Label>
+              <Label className="whitespace-nowrap">Organization ID</Label>
 
               <Input
                 disabled
-                id="organization-id"
                 readOnly
                 value={organization?.id ?? ""}
                 className="flex-1 bg-background font-mono text-sm"
               />
-              <Button
-                className="gap-2"
-                onClick={handleCopy}
-                size="sm"
-              >
+
+              <Button size="sm" onClick={handleCopy} className="gap-2">
                 <CopyIcon className="size-4" />
                 Copy
               </Button>
@@ -106,33 +82,32 @@ export const IntegrationsView = () => {
           </div>
 
           <Separator className="my-8" />
-          <div className="space-y-6">
-            <div className="space-y-1">
-              <Label className="text-lg">Integrations</Label>
-              <p className="text-muted-foreground text-sm">
-                Add the following code to your website to enable the ChatBox
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-              {INTEGRATIONS.map((integration) => (
-                <button
-                  className="flex items-center gap-4 rounded-lg border bg-background p-4 hover:bg-accent"
-                  key={integration.id}
-                  onClick={() => handleIntegrationClick(integration.id)}
-                  type="button"
-                >
-                  {/* Use regular img tag instead of Next.js Image component */}
-                  <img
-                    alt={integration.title}
-                    height={32}
-                    src={integration.icon}
-                    width={32}
-                    className="object-contain"
-                  />
-                  <p>{integration.title}</p>
-                </button>
-              ))}
-            </div>
+
+          <div className="space-y-2">
+            <Label className="text-lg font-medium">Integrations</Label>
+            <p className="text-sm text-muted-foreground">
+              Choose your platform and get your installation script.
+            </p>
+          </div>
+
+          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {INTEGRATIONS.map((integration) => (
+              <button
+                key={integration.id}
+                type="button"
+                onClick={() => handleIntegrationClick(integration.id)}
+                className="flex flex-col items-center gap-3 rounded-lg border bg-background p-4 transition hover:bg-accent"
+              >
+                <img
+                  src={integration.icon}
+                  alt={integration.title}
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+                <p className="text-sm font-medium">{integration.title}</p>
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -146,7 +121,7 @@ export const IntegrationDialog = ({
   snippet,
 }: {
   open: boolean;
-  onOpenChange: (value: boolean) => void;
+  onOpenChange: (v: boolean) => void;
   snippet: string;
 }) => {
   const { organization } = useOrganization();
@@ -154,9 +129,9 @@ export const IntegrationDialog = ({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(snippet);
-      toast.success("Copied to clipboard");
+      toast.success("Copied!");
     } catch {
-      toast.error("Failed to copy to clipboard")
+      toast.error("Failed to copy");
     }
   };
 
@@ -165,62 +140,65 @@ export const IntegrationDialog = ({
       toast.error("Organization ID not found");
       return;
     }
-    
-    // Open demo page in new tab with organization ID
-    const demoUrl = `/integration/demo?orgId=${organization.id}`;
-    window.open(demoUrl, '_blank');
+    window.open(`/integration/demo?orgId=${organization.id}`, "_blank");
   };
 
   return (
-    <Dialog onOpenChange={onOpenChange} open={open}>
-      <DialogContent>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-xl">
         <DialogHeader>
           <DialogTitle>Integrate with your Website</DialogTitle>
           <DialogDescription>
-            Follow these steps to add the ChatBox to your Website
+            Copy the code and add it to your website.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6">
+          {/* Step 1 */}
           <div className="space-y-2">
-            <div className="rounded-md bg-accent p-2 text-sm">
-              1. Copy the following code
+            <div className="rounded-md bg-accent p-2 text-sm font-medium">
+              1. Copy the script
             </div>
+
             <div className="group relative">
-              <pre className="max-h-[300px] overflow-x-auto overflow-y-auto whitespace-pre-wrap break-all rounded-md bg-foreground p-2 font-mono text-secondary text-sm">
+              <pre className="max-h-[300px] overflow-auto whitespace-pre-wrap rounded-md bg-foreground p-3 font-mono text-secondary text-sm">
                 {snippet}
               </pre>
+
               <Button
-                className="absolute top-2 right-2 size-6 opacity-0 transition-opacity group-hover:opacity-100"
                 onClick={handleCopy}
                 size="icon"
                 variant="secondary"
+                className="absolute top-2 right-2 h-7 w-7 opacity-0 group-hover:opacity-100 transition"
               >
                 <CopyIcon className="size-3" />
               </Button>
             </div>
           </div>
 
+          {/* Step 2 */}
           <div className="space-y-2">
-            <div className="rounded-md bg-accent p-2 text-sm">
-              2. Add the code in your page
+            <div className="rounded-md bg-accent p-2 text-sm font-medium">
+              2. Paste it into your HTML
             </div>
-            <p className="text-muted-foreground text-sm">
-              Paste the ChatBox code above in your page. You can add it in the HTML section.
+            <p className="text-sm text-muted-foreground">
+              Add this snippet just before the closing <code>&lt;/body&gt;</code> tag.
             </p>
           </div>
 
+          {/* Step 3 */}
           <div className="space-y-2">
-            <div className="rounded-md bg-accent p-2 text-sm">
-              3. Test your integration
+            <div className="rounded-md bg-accent p-2 text-sm font-medium">
+              3. Preview your integration
             </div>
-            <p className="text-muted-foreground text-sm mb-3">
-              Try out your widget on a demo website before implementing it on your site.
+            <p className="text-sm text-muted-foreground mb-3">
+              Test the widget on a demo page.
             </p>
-            <Button 
+
+            <Button
               onClick={handlePreview}
-              className="w-full gap-2"
               variant="outline"
+              className="w-full gap-2"
             >
               <ExternalLinkIcon className="size-4" />
               Preview Integration
