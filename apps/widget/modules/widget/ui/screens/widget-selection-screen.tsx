@@ -6,23 +6,23 @@ import { WidgetHeader } from "@/modules/widget/ui/components/widget-header";
 import { WidgetFooter } from "../components/widget-footer";
 import { Button } from "@workspace/ui/components/button";
 import { api } from "@workspace/backend/_generated/api";
-import { 
-  MessageSquareTextIcon, 
-  ChevronRightIcon, 
-  MicIcon, 
+import {
+  MessageSquareTextIcon,
+  ChevronRightIcon,
+  MicIcon,
   PhoneIcon,
   SparklesIcon,
-  BotIcon
+  BotIcon,
+  ArrowLeftIcon
 } from "lucide-react";
 import { useSetAtom, useAtomValue, useAtom } from "jotai";
-import { 
-  screenAtom, 
+import {
+  screenAtom,
   organizationIdAtom,
-  errorMessageAtom, 
   contactSessionIdAtomFamily,
-  conversationIdAtom, 
-  widgetSettingsAtom, 
-  hasVapiSecretsAtom 
+  conversationIdAtom,
+  widgetSettingsAtom,
+  hasVapiSecretsAtom
 } from "../../atoms/widget-atoms";
 import { cn } from "@workspace/ui/lib/utils";
 
@@ -97,7 +97,7 @@ export const WidgetSelectionScreen = () => {
   return (
     <div className="flex h-full w-full">
       {/* Left Panel */}
-      <div className="flex-1 flex flex-col items-center justify-center bg-blue-100 p-8 relative">
+      <div className="flex-1 flex flex-col items-center justify-center bg-blue-50 p-8 relative">
         <div className="w-40 h-40 rounded-full bg-white/80 border-4 border-white shadow-lg flex items-center justify-center">
           <p className="text-gray-500 text-center text-sm">Organization Logo</p>
         </div>
@@ -113,31 +113,35 @@ export const WidgetSelectionScreen = () => {
       </div>
 
       {/* Right Panel */}
-      <div className="flex-1 flex flex-col bg-blue-50 shadow-md overflow-y-auto p-6">
-        <WidgetHeader>
-          <div className="flex flex-col justify-between gap-y-2 px-4 py-6">
-            <div className="flex items-center gap-2">
-              <SparklesIcon className="size-5 text-yellow-500" />
-              <p className="text-2xl font-bold text-gray-900">
-                Hi there! 👋
-              </p>
+      <div className="flex-1 flex flex-col bg-blue-100 shadow-md overflow-y-auto p-6">
+        <WidgetHeader className="relative z-10 bg-blue-50 shadow-md">
+          <div className="flex items-center gap-4 px-4 py-3">
+            {/* Home / Back Button */}
+            <Button
+              variant="transparent"
+              size="icon"
+              onClick={() => setScreen("selection")}
+              className="text-blue-900 bg-white/80 hover:bg-white shadow rounded"
+            >
+              <ArrowLeftIcon className="w-5 h-5" />
+            </Button>
+            <div className="flex flex-col">
+              <p className="text-lg font-bold text-blue-900">Hi there! 👋</p>
+              <p className="text-sm text-blue-800">How would you like to get help today?</p>
             </div>
-            <p className="text-lg text-gray-600 font-medium">
-              How would you like to get help today?
-            </p>
           </div>
         </WidgetHeader>
 
-        <div className="flex flex-1 flex-col gap-y-4">
+        <div className="flex flex-1 flex-col gap-y-4 mt-4">
           {actionButtons.map((button) => (
             <Button
               key={button.id}
               className={cn(
                 "h-24 w-full justify-between p-6 transition-all duration-200",
-                "border-2 border-gray-100 rounded-xl",
+                "border-2 border-gray-200 rounded-xl",
                 "hover:scale-[1.03] hover:shadow-lg",
                 button.bgColor,
-                hoveredButton === button.id && "ring-2 ring-offset-2 ring-blue-200"
+                hoveredButton === button.id && "ring-2 ring-offset-2 ring-blue-300"
               )}
               variant="outline"
               onClick={button.onClick}
@@ -156,24 +160,24 @@ export const WidgetSelectionScreen = () => {
                   <span className="font-semibold text-gray-900 text-left text-lg">
                     {button.label}
                   </span>
-                  <span className="text-sm text-gray-500 text-left">
+                  <span className="text-sm text-gray-800 text-left">
                     {button.description}
                   </span>
                 </div>
               </div>
               <div className={cn(
                 "p-2 rounded-full transition-colors",
-                hoveredButton === button.id ? "bg-blue-100" : "bg-gray-100"
+                hoveredButton === button.id ? "bg-blue-200" : "bg-gray-100"
               )}>
-                <ChevronRightIcon className="size-5 text-gray-600" />
+                <ChevronRightIcon className="size-5 text-gray-700" />
               </div>
             </Button>
           ))}
 
           {/* Quick Help Section */}
-          <div className="mt-6 p-4 bg-blue-100 rounded-xl border border-blue-200">
+          <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
             <div className="flex items-center gap-2 mb-2">
-              <BotIcon className="size-4 text-blue-600" />
+              <BotIcon className="size-4 text-blue-800" />
               <h3 className="font-semibold text-blue-900 text-sm">Quick Help</h3>
             </div>
             <p className="text-xs text-blue-800">
@@ -182,9 +186,9 @@ export const WidgetSelectionScreen = () => {
           </div>
 
           {/* Support Status */}
-          <div className="flex items-center gap-2 p-3 bg-blue-100 rounded-lg">
+          <div className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-xs text-gray-600">Support available now</span>
+            <span className="text-xs text-gray-800">Support available now</span>
           </div>
         </div>
 

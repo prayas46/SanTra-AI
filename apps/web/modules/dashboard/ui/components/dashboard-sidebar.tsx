@@ -1,13 +1,28 @@
 "use client";
 
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import { CreditCardIcon, InboxIcon, LayoutDashboardIcon, LibraryBigIcon, Mic, PaletteIcon } from "lucide-react";
+import {
+  CreditCardIcon,
+  InboxIcon,
+  LayoutDashboardIcon,
+  LibraryBigIcon,
+  Mic,
+  PaletteIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Sidebar, SidebarContent, SidebarFooter, SidebarHeader,
-  SidebarMenu, SidebarMenuItem, SidebarMenuButton,
-  SidebarGroup, SidebarGroupLabel, SidebarGroupContent,
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenuItem,
+  SidebarMenu,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarGroupContent,
+  SidebarMenuButton,
+  SidebarRail,
 } from "@workspace/ui/components/sidebar";
 import { cn } from "@workspace/ui/lib/utils";
 
@@ -28,29 +43,25 @@ const accountItems = [
 
 export const DashboardSidebar = () => {
   const pathname = usePathname();
-  // Checks if the path starts with the item's URL for active state
-  const isActive = (url: string) => pathname.startsWith(url);
+  const isActive = (url: string) =>
+    url === "/" ? pathname === "/" : pathname.startsWith(url);
 
   return (
-    // 'collapsible="icon"' handles the state that the CSS targets with '.sidebar.collapsed'
-    <Sidebar className="sidebar h-screen w-64 group" collapsible="icon">
+    <Sidebar className="h-screen w-64 bg-blue-50 text-blue-900 group">
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem className="!m-0 !rounded-none"> 
-            <SidebarMenuButton asChild size="lg" className="w-full">
-              <OrganizationSwitcher 
-                hidePersonal 
-                skipInvitationScreen 
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild size="lg">
+              <OrganizationSwitcher
+                hidePersonal
+                skipInvitationScreen
                 appearance={{
                   elements: {
-                    rootBox: "w-full h-8",
-                    avatarBox: "size-4 rounded-sm",
-                    // Custom class for glow effect and to manage collapse behavior
-                    organizationSwitcherTrigger: "w-full justify-start organization-switcher-glow-tab",
-                    // Make organization name visible
-                    organizationPreviewTextContainer: "text-xs font-medium text-sidebar-text",
-                    organizationSwitcherTriggerIcon: "ml-auto text-sidebar-text block",
-                  }
+                    rootBox: "w-full! h-8",
+                    avatarBox: "size-4! rounded-sm!",
+                    organizationSwitcherTrigger: "w-full! justify-start!",
+                    organizationPreviewTextContainer: "text-xs! font-medium! text-blue-900!",
+                  },
                 }}
               />
             </SidebarMenuButton>
@@ -59,15 +70,24 @@ export const DashboardSidebar = () => {
       </SidebarHeader>
 
       <SidebarContent>
+        {/* Customer Support */}
         <SidebarGroup>
           <SidebarGroupLabel>Customer Support</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {customerSupportItems.map(item => (
-                <SidebarMenuItem key={item.title} className={cn(isActive(item.url) && "active")}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url}>
-                      <item.icon />
+              {customerSupportItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive(item.url)}
+                    className={cn(
+                      isActive(item.url) &&
+                        "bg-gradient-to-b from-blue-200 to-blue-300 text-blue-900 hover:to-blue-400!"
+                    )}
+                    tooltip={item.title}
+                  >
+                    <Link href={item.url} className="flex items-center gap-3">
+                      <item.icon className="w-5 h-5 text-blue-900" />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -77,15 +97,24 @@ export const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
+        {/* Configuration */}
         <SidebarGroup>
           <SidebarGroupLabel>Configuration</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {configurationItems.map(item => (
-                <SidebarMenuItem key={item.title} className={cn(isActive(item.url) && "active")}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url}>
-                      <item.icon />
+              {configurationItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive(item.url)}
+                    className={cn(
+                      isActive(item.url) &&
+                        "bg-gradient-to-b from-blue-200 to-blue-300 text-blue-900 hover:to-blue-400!"
+                    )}
+                    tooltip={item.title}
+                  >
+                    <Link href={item.url} className="flex items-center gap-3">
+                      <item.icon className="w-5 h-5 text-blue-900" />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -95,15 +124,24 @@ export const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
+        {/* Account */}
         <SidebarGroup>
           <SidebarGroupLabel>Account</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {accountItems.map(item => (
-                <SidebarMenuItem key={item.title} className={cn(isActive(item.url) && "active")}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url}>
-                      <item.icon />
+              {accountItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive(item.url)}
+                    className={cn(
+                      isActive(item.url) &&
+                        "bg-gradient-to-b from-blue-200 to-blue-300 text-blue-900 hover:to-blue-400!"
+                    )}
+                    tooltip={item.title}
+                  >
+                    <Link href={item.url} className="flex items-center gap-3">
+                      <item.icon className="w-5 h-5 text-blue-900" />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -117,15 +155,24 @@ export const DashboardSidebar = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <UserButton showName afterSignOutUrl="/" appearance={{
+            <UserButton
+              showName
+              appearance={{
                 elements: {
-                    // Custom class for glow effect and to manage collapse behavior
-                    userButtonBox: "w-full user-button-glow-tab"
-                }
-            }}/>
+                  rootBox: "w-full! h-8!",
+                  userButtonTrigger:
+                    "w-full! p-2! hover:bg-blue-200! hover:text-blue-900!",
+                  userButtonBox:
+                    "w-full! flex-row-reverse! justify-end! gap-2! text-blue-900!",
+                  avatarBox: "size-4!",
+                },
+              }}
+            />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
+
+      <SidebarRail />
     </Sidebar>
   );
 };

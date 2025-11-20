@@ -12,40 +12,40 @@
     Root Variables
 -------------------------------- */
 :root {
-  --background: #f4f5f7;
-  --foreground: #1f2937;
-  --card: #ffffff;
-  --card-foreground: #1f2937;
+  --background: #e6f0ff;         /* Light blue background */
+  --foreground: #0f172a;         /* Dark text */
+  --card: #ffffff;               /* White cards */
+  --card-foreground: #0f172a;    /* Card text */
   --popover: #ffffff;
-  --popover-foreground: #1f2937;
-  --primary: #4f46e5;
+  --popover-foreground: #0f172a;
+  --primary: #3b82f6;            /* Soft blue */
   --primary-foreground: #ffffff;
-  --secondary: #3b82f6;
+  --secondary: #60a5fa;          /* Lighter blue hover */
   --secondary-foreground: #ffffff;
-  --muted: #e5e7eb;
-  --muted-foreground: #6b7280;
-  --accent: #10b981;
+  --muted: #dbeafe;              /* Very light blue for subtle text */
+  --muted-foreground: #1e293b;   /* Dark timestamp */
+  --accent: #38bdf8;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #d1d5db;
-  --input: #d1d5db;
-  --ring: #4f46e5;
+  --border: #bfdbfe;             /* Light blue border */
+  --input: #ffffff;
+  --ring: #3b82f6;
 
   /* Charts */
-  --chart-1: #4f46e5;
-  --chart-2: #3b82f6;
-  --chart-3: #8b5cf6;
-  --chart-4: #6366f1;
-  --chart-5: #a78bfa;
+  --chart-1: #3b82f6;
+  --chart-2: #60a5fa;
+  --chart-3: #93c5fd;
+  --chart-4: #bfdbfe;
+  --chart-5: #dbeafe;
 
   /* Sidebar */
-  --sidebar-bg: #111827;
-  --sidebar-text: #e5e7eb;
-  --sidebar-hover: #1f2937;
-  --sidebar-active: linear-gradient(135deg, #4f46e5, #3b82f6);
+  --sidebar-bg: #dbeafe;
+  --sidebar-text: #1e293b;
+  --sidebar-hover: #bfdbfe;
+  --sidebar-active: #3b82f6;
   --sidebar-active-text: #ffffff;
-  --sidebar-border: #374151;
+  --sidebar-border: #93c5fd;
 
   /* Typography */
   --font-sans: Inter, sans-serif;
@@ -53,7 +53,7 @@
   --font-mono: JetBrains Mono, monospace;
 
   /* Radius & Shadows */
-  --radius: 0.475rem;
+  --radius: 0.5rem;
   --shadow-xs: 0 1px 2px rgba(0,0,0,0.06);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
@@ -69,27 +69,25 @@
     Dark Mode
 -------------------------------- */
 .dark {
-  --background: #1f2937;
+  --background: #1e293b;
   --foreground: #f3f4f6;
   --card: #374151;
   --card-foreground: #f3f4f6;
   --popover: #374151;
   --popover-foreground: #f3f4f6;
-  --primary: #6366f1;
+  --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #3b82f6;
+  --secondary: #60a5fa;
   --secondary-foreground: #ffffff;
   --muted: #4b5563;
   --muted-foreground: #d1d5db;
   --accent: #10b981;
   --accent-foreground: #ffffff;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
 
-  --sidebar-bg: #111827;
+  --sidebar-bg: #1e293b;
   --sidebar-text: #d1d5db;
-  --sidebar-hover: #1f2937;
-  --sidebar-active: linear-gradient(135deg, #6366f1, #3b82f6);
+  --sidebar-hover: #374151;
+  --sidebar-active: #3b82f6;
   --sidebar-active-text: #ffffff;
   --sidebar-border: #374151;
 }
@@ -140,7 +138,7 @@
 }
 
 /* -----------------------------
-    Base
+    Base Styles
 -------------------------------- */
 * {
   @apply border-border outline-ring/50;
@@ -152,193 +150,27 @@ body {
   font-weight: 500;
 }
 
-button:not([disabled]),
-[role="button"]:not([disabled]) {
-  cursor: pointer;
-}
-
 /* -----------------------------
-    Sidebar
+    Buttons
 -------------------------------- */
-.sidebar {
-  background-color: var(--sidebar-bg);
-  color: var(--sidebar-text);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 280px; /* Base width for expanded state */
-  /* Enhanced transition for smooth collapse */
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-lg); /* General sidebar shadow */
-  border-right: 1px solid var(--sidebar-border); 
-}
-
-/* Sidebar collapsed state - DECREASED WIDTH */
-.sidebar.collapsed {
-  width: 64px; /* Icon-only width */
-}
-
-.sidebar-header,
-.sidebar-footer {
-  padding: 1rem;
-  border-color: var(--sidebar-border);
-  border-style: solid;
-  transition: padding 0.3s ease-in-out;
-}
-
-.sidebar-header { border-bottom-width: 1px; }
-.sidebar-footer { border-top-width: 1px; }
-
-.sidebar-group-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--sidebar-text);
-  opacity: 0.8;
+button {
+  border-radius: var(--radius);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   padding: 0.5rem 1rem;
   font-weight: 600;
-  transition: opacity 0.3s ease-in-out;
+  transition: all 0.3s;
 }
 
-/* Hide group labels when collapsed */
-.sidebar.collapsed .sidebar-group-label {
-  opacity: 0;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.sidebar-menu-item {
-  border-radius: var(--radius);
-  /* Slightly increased horizontal margin for better spacing */
-  margin: 0.4rem 0.75rem; 
-  transition: all 0.3s ease-in-out;
-}
-
-.sidebar-menu-item a {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-  /* Increased horizontal padding for item content clearance */
-  padding: 0.75rem 1.5rem; 
-  border-radius: var(--radius);
-  color: var(--sidebar-text);
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: all 0.3s ease-in-out;
-}
-
-.sidebar-menu-item a span {
-  white-space: nowrap;
-}
-
-/* Fix for menu item collapse: Center icon and hide text */
-.sidebar.collapsed .sidebar-menu-item a {
-  padding: 0.75rem; /* Center the icon */
-  justify-content: center;
-}
-
-.sidebar.collapsed .sidebar-menu-item a span {
-  display: none;
-}
-
-/* Enhanced Hover Effect on Menu Items (Stronger Glow) */
-.sidebar-menu-item:hover a {
-  background-color: var(--sidebar-hover);
-  color: var(--sidebar-active-text);
-  /* Stronger glow and subtle scale */
-  transform: scale(1.02);
-  box-shadow: 0 0 20px 0 rgba(79, 70, 229, 0.6); /* More intense primary color glow */
-}
-
-.sidebar-menu-item:hover svg {
-  stroke: var(--sidebar-active-text); /* Icon color on hover */
-}
-
-/* Active Menu Item with Strongest Glow */
-.sidebar-menu-item.active a {
-  background: var(--sidebar-active);
-  color: var(--sidebar-active-text);
-  box-shadow: 0 0 15px 0 rgba(79, 70, 229, 1.0); /* Very strong primary glow */
-  font-weight: 600;
-}
-
-.sidebar-menu-item.active svg {
-  stroke: var(--sidebar-active-text);
-}
-
-.sidebar-menu-item svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Organization Switcher (Clerk) - GLOW TAB */
-.organization-switcher-glow-tab {
-  background-color: #1f2937 !important;
-  border-radius: var(--radius) !important;
-  padding: 0.5rem 0.75rem !important;
-  color: #e5e7eb !important;
-  transition: all 0.3s ease-in-out !important;
-  box-shadow: none !important;
-}
-
-.organization-switcher-glow-tab:hover,
-.organization-switcher-glow-tab:focus {
-  background-color: #374151 !important;
-  /* Glowing Effect with slight scale */
-  box-shadow: 0 0 20px 0 rgba(79, 70, 229, 1.0) !important; /* Stronger glow on hover */
-  transform: scale(1.02);
-}
-
-.organization-switcher-glow-tab span {
-  font-weight: 600 !important;
-  color: #f3f4f6 !important;
-}
-
-/* Collapse handling for Organization Switcher: hide text and center icon */
-.sidebar.collapsed .organization-switcher-glow-tab .cl-organizationPreviewTextContainer {
-    display: none !important;
-}
-.sidebar.collapsed .organization-switcher-glow-tab {
-    justify-content: center !important;
-    padding: 0.75rem !important;
-}
-.sidebar.collapsed .organization-switcher-glow-tab .cl-organizationSwitcherTriggerIcon {
-    display: none !important; /* Hide dropdown arrow when collapsed */
-}
-
-
-/* User Button Footer (Clerk) - GLOW TAB */
-.user-button-glow-tab {
-  background-color: #1f2937 !important;
-  border-radius: var(--radius) !important;
-  padding: 0.5rem !important;
-  color: #e5e7eb !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.5rem !important;
-  transition: all 0.3s ease-in-out !important;
-}
-
-.user-button-glow-tab:hover {
-  background-color: #374151 !important;
-  /* Glowing Effect with slight scale */
-  box-shadow: 0 0 20px 0 rgba(79, 70, 229, 1.0) !important; /* Stronger glow on hover */
-  transform: scale(1.02);
-}
-
-/* Collapse handling for User Button: hide name and center icon */
-.sidebar.collapsed .user-button-glow-tab .cl-userButtonText {
-    display: none !important;
-}
-.sidebar.collapsed .user-button-glow-tab {
-    justify-content: center !important;
-    padding: 0.75rem !important;
+button:hover {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 /* -----------------------------
-    Forms, Inputs, Buttons
+    Forms, Inputs
 -------------------------------- */
 input,
 textarea,
@@ -358,21 +190,76 @@ select:focus {
   outline-offset: 0;
 }
 
-/* Buttons */
-button {
-  border-radius: var(--radius);
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-  transition: all 0.3s;
+/* -----------------------------
+    Sidebar
+-------------------------------- */
+.sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 280px;
+  transition: width 0.3s;
+  border-right: 1px solid var(--sidebar-border);
 }
 
-button:hover {
-  background-color: var(--secondary);
-  color: var(--secondary-foreground);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+.sidebar.collapsed {
+  width: 64px;
+}
+
+.sidebar-menu-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  color: var(--sidebar-text);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-menu-item:hover a {
+  background-color: var(--sidebar-hover);
+  color: var(--sidebar-active-text);
+}
+
+.sidebar-menu-item.active a {
+  background: var(--sidebar-active);
+  color: var(--sidebar-active-text);
+  font-weight: 600;
+}
+
+/* -----------------------------
+    Inbox / Card Items
+-------------------------------- */
+.widget-inbox-item {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  transition: background-color 0.2s;
+}
+
+.widget-inbox-item:hover {
+  background-color: #d0e7ff;
+}
+
+/* Timestamp */
+.timestamp {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: var(--radius);
 }
 
 /* -----------------------------
