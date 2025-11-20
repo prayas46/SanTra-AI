@@ -7,6 +7,7 @@ import { escalateConversation } from "../system/ai/tools/escalateConversation";
 import { resolveConversation } from "../system/ai/tools/resolveConversation";
 import { saveMessage } from "@convex-dev/agent";
 import { search } from "../system/ai/tools/search";
+import { databaseQueryTool } from "../system/ai/tools/databaseQueryTool";
 
 export const create = action({
     args: {
@@ -69,10 +70,11 @@ export const create = action({
                     tools: {
                         escalateConversationTool: escalateConversation,
                         resolveConversationTool: resolveConversation,
-                        serachTool: search,
-                    }
+                        searchTool: search,
+                        databaseQueryTool,
+                    },
                 },
-            )
+            );
         } else {
             await saveMessage(ctx, components.agent, {
                 threadId: args.threadId,

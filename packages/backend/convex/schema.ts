@@ -13,9 +13,8 @@ export default defineSchema({
     }),
     vapiSettings: v.object({
       assistantId: v.optional(v.string()),
-
-       phoneNumber: v.optional(v.string()),
-
+      phoneNumber: v.optional(v.string()),
+      workflowId: v.optional(v.string()),
     }),
   })
  .index("by_organization_id", ["organizationId"]),
@@ -51,6 +50,7 @@ export default defineSchema({
      metadata: v.optional(v.object({
       userAgent: v.optional(v.string()),
       language:  v.optional(v.string()),
+      preferredLanguage: v.optional(v.string()),
       languages: v.optional(v.string()),
       platform:  v.optional(v.string()),
       vendor:  v.optional(v.string()),
