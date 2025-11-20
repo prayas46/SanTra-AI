@@ -1,126 +1,75 @@
 "use client";
 
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import {
-  CreditCardIcon,
-  InboxIcon,
-  LayoutDashboardIcon,
-  LibraryBigIcon,
-  Mic,
-  PaletteIcon,
-} from "lucide-react";
-import Image from "next/image";
+import { CreditCardIcon, InboxIcon, LayoutDashboardIcon, LibraryBigIcon, Mic, PaletteIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarMenuItem,
-  SidebarMenu,
-  SidebarGroup,
-  SidebarRail,
-  SidebarMenuButton,
-  SidebarGroupLabel,
-  SidebarGroupContent,
+  Sidebar, SidebarContent, SidebarFooter, SidebarHeader,
+  SidebarMenu, SidebarMenuItem, SidebarMenuButton,
+  SidebarGroup, SidebarGroupLabel, SidebarGroupContent,
 } from "@workspace/ui/components/sidebar";
 import { cn } from "@workspace/ui/lib/utils";
 
 const customerSupportItems = [
-  {
-    title: "Conversations",
-    url: "/conversations",
-    icon: InboxIcon,
-  },
-  {
-    title: "Knowledge Base",
-    url: "/files",
-    icon: LibraryBigIcon,
-  },
+  { title: "Conversations", url: "/conversations", icon: InboxIcon },
+  { title: "Knowledge Base", url: "/files", icon: LibraryBigIcon },
 ];
+
 const configurationItems = [
-    {
-    title: "Widget Customization",
-    url: "/customization",
-    icon: PaletteIcon,
-    },
-    { title: "Integrations",
-    url: "/integrations",
-    icon: LayoutDashboardIcon,
-    },
-     { title: "Voice Assistant",
-    url: "/plugins/vapi",
-    icon: Mic,
-    },
+  { title: "Widget Customization", url: "/customization", icon: PaletteIcon },
+  { title: "Integrations", url: "/integrations", icon: LayoutDashboardIcon },
+  { title: "Voice Assistant", url: "/plugins/vapi", icon: Mic },
 ];
 
 const accountItems = [
-    {
-    title: "Plans & Billing",
-    url : "/billing",
-    icon: CreditCardIcon,
-    },
-    
-         
-    ];
+  { title: "Plans & Billing", url: "/billing", icon: CreditCardIcon },
+];
 
 export const DashboardSidebar = () => {
   const pathname = usePathname();
-  const isActive = (url: string) => {
-    if (url === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(url);
-  };
+  // Checks if the path starts with the item's URL for active state
+  const isActive = (url: string) => pathname.startsWith(url);
+
   return (
-    <Sidebar
-      className="h-screen w-64 bg-gray-900 text-white group"
-      collapsible="icon"
-    >
+    // 'collapsible="icon"' handles the state that the CSS targets with '.sidebar.collapsed'
+    <Sidebar className="sidebar h-screen w-64 group" collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild size="lg">
+          <SidebarMenuItem className="!m-0 !rounded-none"> 
+            <SidebarMenuButton asChild size="lg" className="w-full">
               <OrganizationSwitcher 
-              hidePersonal 
-              skipInvitationScreen 
-              appearance={{
-                elements: {
-                    rootBox:"w-full! h-8",
-                    avatarBox: "size-4! rounded-sm!",
-                    organizationSwitcherTrigger: "w-full! justify-start! group-data-[colapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!",
-                    organizationPreview: "group-data-[collapsible=icon]:justify-center! gap-2!",
-                    organizationPreviewTextContainer: "group-data-[collapsible=icon]:hidden! text-xs! font-medium! text-sidebar-foreground!",
-                    organizationSwitcherTriggerIcon: "group-data-[collapsible=icon]:hidden! ml-auto! text-sidebar-foreground!"
-                }
-              }}
+                hidePersonal 
+                skipInvitationScreen 
+                appearance={{
+                  elements: {
+                    rootBox: "w-full h-8",
+                    avatarBox: "size-4 rounded-sm",
+                    // Custom class for glow effect and to manage collapse behavior
+                    organizationSwitcherTrigger: "w-full justify-start organization-switcher-glow-tab",
+                    // Make organization name visible
+                    organizationPreviewTextContainer: "text-xs font-medium text-sidebar-text",
+                    organizationSwitcherTriggerIcon: "ml-auto text-sidebar-text block",
+                  }
+                }}
               />
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent>
-        {/*Customer support*/}
         <SidebarGroup>
           <SidebarGroupLabel>Customer Support</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {customerSupportItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    className={cn(
-                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
-                    )}
-                    tooltip={item.title}
-                    
-                  >
-                    <Link href={item.url} className="flex items-center gap-3">
-  <item.icon className="w-5 h-5 text-black" />
-  <span className="text-black">{item.title}</span> {/* Add text color here */}
-</Link>
+              {customerSupportItems.map(item => (
+                <SidebarMenuItem key={item.title} className={cn(isActive(item.url) && "active")}>
+                  <SidebarMenuButton asChild>
+                    <Link href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -128,27 +77,17 @@ export const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
-
-        {/*Configuration*/}
         <SidebarGroup>
           <SidebarGroupLabel>Configuration</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {configurationItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    className={cn(
-                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
-                    )}
-                    tooltip={item.title}
-                    
-                  >
-                    <Link href={item.url} className="flex items-center gap-3">
-  <item.icon className="w-5 h-5 text-black" />
-  <span className="text-black">{item.title}</span> {/* Add text color here */}
-</Link>
+              {configurationItems.map(item => (
+                <SidebarMenuItem key={item.title} className={cn(isActive(item.url) && "active")}>
+                  <SidebarMenuButton asChild>
+                    <Link href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -156,27 +95,17 @@ export const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
-
-         {/*Account*/}
         <SidebarGroup>
           <SidebarGroupLabel>Account</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {accountItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    className={cn(
-                        isActive(item.url) && "bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!",
-                    )}
-                    tooltip={item.title}
-                    
-                  >
-                    <Link href={item.url} className="flex items-center gap-3">
-  <item.icon className="w-5 h-5 text-black" />
-  <span className="text-black">{item.title}</span> {/* Add text color here */}
-</Link>
+              {accountItems.map(item => (
+                <SidebarMenuItem key={item.title} className={cn(isActive(item.url) && "active")}>
+                  <SidebarMenuButton asChild>
+                    <Link href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -184,29 +113,19 @@ export const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter>
         <SidebarMenu>
-            <SidebarMenuItem>
-                 <UserButton
-                    showName
-                    appearance={{
-                        elements: {
-                            rootBox: "w-full! h-8!",
-                            userButtonTrigger: "w-full! p-2! hover:bg-sidebar-accent! hover:text-sidebar-accent-foreground! group-data-[collapsible=icon]:size-8!group-data-[collapsible=icon]:p-2!",
-                            userButtonBox: "w-full! flex-row-reverse! justify-end! gap-2! group-data-[collapsible=icon]:justify-center! text-sidebar-foreground!",
-                            userButtonOuterIdentifier: "pl-0! group-data-[collapsible=icon]:hidden!",
-                            avatarBox:"size-4!"
-                            
-                        }
-                    }}
-                 />
-             
-            
-                
-            </SidebarMenuItem>
+          <SidebarMenuItem>
+            <UserButton showName afterSignOutUrl="/" appearance={{
+                elements: {
+                    // Custom class for glow effect and to manage collapse behavior
+                    userButtonBox: "w-full user-button-glow-tab"
+                }
+            }}/>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
-      <SidebarRail />
     </Sidebar>
   );
 };

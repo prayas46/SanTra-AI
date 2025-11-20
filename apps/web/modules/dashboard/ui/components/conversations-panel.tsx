@@ -1,5 +1,5 @@
-
 "use client";
+
 import {
     Select,
     SelectContent,
@@ -7,7 +7,15 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@workspace/ui/components/select";
-import { List, ListIcon, ArrowRightIcon, ArrowUpIcon, CheckIcon, CornerUpLeftIcon } from "lucide-react";
+
+import {
+    ListIcon,
+    ArrowRightIcon,
+    ArrowUpIcon,
+    CheckIcon,
+    CornerUpLeftIcon,
+} from "lucide-react";
+
 import { usePaginatedQuery } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
 import { usePathname } from "next/navigation";
@@ -24,91 +32,112 @@ import { useInfiniteScroll } from "@workspace/ui/hooks/use-infinite-scroll";
 import { InfiniteScrollTrigger } from "@workspace/ui/components/infinite-scroll-trigger";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 
+// Component for rendering skeleton loading state
+export const SkeletonConversations = () => (
+    <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-auto px-4 py-2">
+        {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="flex items-start gap-3 p-3">
+                <Skeleton className="h-10 w-10 rounded-full" />
+
+                <div className="flex-1">
+                    <Skeleton className="h-4 w-24" />
+                    <div className="mt-2">
+                        <Skeleton className="h-3 w-full" />
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+);
+
+
 export const ConversationsPanel = () => {
     const pathname = usePathname();
     const statusFilter = useAtomValue(statusFilterAtom);
     const setStatusFilter = useSetAtom(statusFilterAtom);
 
+    // Fetch paginated conversations data
     const conversations = usePaginatedQuery(
         api.private.conversations.getMany,
         {
-            status:
-                statusFilter === "all"
-                    ? undefined
-                    : statusFilter,
+            status: statusFilter === "all" ? undefined : statusFilter,
         },
         {
             initialNumItems: 10,
-        },
+        }
     );
 
-
+    // Hook for handling infinite scroll
     const {
         topElementRef,
         handleLoadMore,
         canLoadMore,
         isLoadingMore,
         isLoadingFirstPage,
-
     } = useInfiniteScroll({
         status: conversations.status,
         loadMore: conversations.loadMore,
         loadSize: 10,
-
     });
 
-
     return (
-        <div className="flex h-full w-full flex-col bg-background text-sidebar-foreground">
-            <div className="flex flex-col gap-3.5 border-b p-2">
+        // Set a fixed, wider width (w-96, which is 384px) to take more horizontal screen space.
+        // NOTE: The previous JSX comment was incorrectly placed, causing syntax errors.
+        <div className="flex h-full w-96 flex-shrink-0 flex-col bg-background">
+            
+            {/* FILTER BAR - Increased padding, added shadow for separation */}
+            <div className="flex flex-col gap-3.5 border-b px-4 pt-4 pb-3 shadow-sm">
                 <Select
-                    defaultValue="all"
-                    onValueChange={(value) => setStatusFilter(
-                        value as "unresolved" | "escalated" | "resolved" | "all"
-                    )}
-                    value={statusFilter} // Controlled by Jotai atom
+                    value={statusFilter}
+                    onValueChange={(value) =>
+                        setStatusFilter(value as "unresolved" | "escalated" | "resolved" | "all")
+                    }
                 >
-                    <SelectTrigger
-                        className="h-8 border-none px-1.5 shadow-none ring-0 hover:bg-accent hover:text-accent-foreground focus-visible:ring-0"
-                    >
+                    <SelectTrigger className="h-9 border-border shadow-md transition-colors hover:bg-muted/50 focus:bg-muted/50">
                         <SelectValue placeholder="Filter" />
                     </SelectTrigger>
+
                     <SelectContent>
                         <SelectItem value="all">
                             <div className="flex items-center gap-2">
                                 <ListIcon className="size-4" />
-                                <span>All</span>
+                                All
                             </div>
                         </SelectItem>
+
                         <SelectItem value="unresolved">
                             <div className="flex items-center gap-2">
-                                <ArrowRightIcon className="size-4" />
-                                <span>Unresolved</span>
+                                <ArrowRightIcon className="size-4 text-primary" />
+                                Unresolved
                             </div>
                         </SelectItem>
+
                         <SelectItem value="escalated">
                             <div className="flex items-center gap-2">
-                                <ArrowUpIcon className="size-4" />
-                                <span>Escalated</span>
+                                <ArrowUpIcon className="size-4 text-destructive" />
+                                Escalated
                             </div>
                         </SelectItem>
+
                         <SelectItem value="resolved">
                             <div className="flex items-center gap-2">
-                                <CheckIcon className="size-4" />
-                                <span>Resolved</span>
+                                <CheckIcon className="size-4 text-accent" />
+                                Resolved
                             </div>
                         </SelectItem>
                     </SelectContent>
                 </Select>
             </div>
+
+            {/* BODY */}
             {isLoadingFirstPage ? (
-               <SkeletonConversations />
+                <SkeletonConversations />
             ) : (
                 <ScrollArea className="max-h-[calc(100vh-53px)]">
-                    <div className="flex w-full flex-1 flex-col text-sm">
-
-                        {conversations.results.map((conversation) => {
-                            const isLastMessageFromOperator = 
+                    {/* Added horizontal padding to the container for list items */}
+                    <div className="flex w-full flex-col px-4"> 
+                        {conversations.results.map((conversation: any) => {
+                            const isLastFromOperator =
                                 conversation.lastMessage?.message?.role !== "user";
 
                             const country = getCountryFromTimezone(
@@ -122,98 +151,68 @@ export const ConversationsPanel = () => {
                             return (
                                 <Link
                                     key={conversation._id}
-                                    className={cn(
-                                        "relative flex cursor-pointer items-start gap-3 border-b p-4 py-5 text-sm leading-tight hover:bg-accent hover:text-accent-foreground",
-                                        pathname === `/conversations/${conversation._id}` &&
-                                        "bg-accent text-accent-foreground"
-                                    )}
                                     href={`/conversations/${conversation._id}`}
-                                >
-
-                                    <div className={cn(
-                                        "-translate-y-1/2 absolute top-1/2 left-0 h-[64%] w-1 rounded-r-full bg-neutral-300 opacity-0 transition-opacity",
+                                    className={cn(
+                                        "relative flex cursor-pointer items-start gap-3 border-b py-3 transition-colors duration-150 rounded-md -mx-2 px-2", // Adjusted vertical padding and added hover padding
+                                        "hover:bg-accent/10",
                                         pathname === `/conversations/${conversation._id}` &&
-                                        "opacity-100"
-                                    )} />
-
+                                            "bg-accent/20 border-accent/50 hover:bg-accent/20 shadow-inner" // Highlight active item more
+                                    )}
+                                >
                                     <DicebearAvatar
                                         seed={conversation.contactSession._id}
                                         badgeImageUrl={countryFlagUrl}
                                         size={40}
                                         className="shrink-0"
                                     />
-                                    <div className="flex-1">
-                                        <div className="flex w-full items-center gap-2">
-                                            <span className="truncate font-bold">
+
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex justify-between items-center mb-0.5">
+                                            <span className="truncate font-semibold text-foreground">
                                                 {conversation.contactSession.name}
                                             </span>
-                                            <span className="ml-auto shrink-0 text-muted-foreground text-xs">
-                                                {formatDistanceToNow(conversation._creationTime)}
+
+                                            {/* Time stamp moved to align right with the primary text */}
+                                            <span className="ml-2 text-xs text-muted-foreground shrink-0">
+                                                {formatDistanceToNow(
+                                                    conversation._creationTime,
+                                                    { addSuffix: true }
+                                                )}
                                             </span>
                                         </div>
-                                        <div className="mt-1 flex items-center justify-between gap-2">
-                                            <div className="flex w-0 grow items-center gap-1">
-                                                {isLastMessageFromOperator && (
-                                                    <CornerUpLeftIcon className="size-3 shrink-0 text-muted-foreground" />
-                                                )}
-                                                <span
-                                                    className={cn(
-                                                        "line-clamp-1 text-muted-foreground text-xs",
-                                                        !isLastMessageFromOperator && "font-bold text-black"
-                                                    )}
-                                                >
-                                                    {conversation.lastMessage?.text}
 
-                                                </span>
-                                            </div>
-                                            <ConversationStatusIcon status={conversation.status} />
+                                        <div className="flex items-center gap-2">
+                                            {isLastFromOperator && (
+                                                <CornerUpLeftIcon className="size-3 text-muted-foreground" />
+                                            )}
+
+                                            <span
+                                                className={cn(
+                                                    "line-clamp-1 text-sm text-muted-foreground pr-1 flex-1 min-w-0", // Added flex-1 and min-w-0 for better truncation
+                                                    !isLastFromOperator && "font-medium text-foreground"
+                                                )}
+                                            >
+                                                {conversation.lastMessage?.text || "No recent messages."}
+                                            </span>
+
+                                            <ConversationStatusIcon
+                                                status={conversation.status}
+                                            />
                                         </div>
                                     </div>
-
                                 </Link>
-                            )
-
+                            );
                         })}
 
                         <InfiniteScrollTrigger
+                            ref={topElementRef}
                             canLoadMore={canLoadMore}
                             isLoadingMore={isLoadingMore}
                             onLoadMore={handleLoadMore}
-                            ref={topElementRef}
                         />
                     </div>
                 </ScrollArea>
             )}
         </div>
-    )
-}
-
-
-
-export const SkeletonConversations = () => {
-    return (
-        <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-auto">
-            <div className="relative flex w-full min-w-0 flex-col p-2">
-                <div className="w-full space-y-2">
-                    {Array.from({ length: 8 }).map((_, index) => (
-                        <div
-                            className="flex items-start gap-3 rounded-lg p-4"
-                            key={index}
-                        >
-                            <Skeleton className="h-10 w-10 shrink-0 rounded-full" />
-                            <div className="min-w-0 flex-1">
-                                <div className="flex w-full items-center gap-2">
-                                    <Skeleton className="h-4 w-24" />
-                                    <Skeleton className="ml-auto h-3 w-12 shrink-0" />
-                                </div>
-                                <div className="mt-2">
-                                    <Skeleton className="h-3 w-full" />
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    )
-}
+    );
+};
