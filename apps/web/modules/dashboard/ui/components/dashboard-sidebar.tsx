@@ -8,6 +8,7 @@ import {
   LibraryBigIcon,
   Mic,
   PaletteIcon,
+  DatabaseIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,6 +45,11 @@ const configurationItems = [
     title: "Widget Customization",
     url: "/customization",
     icon: PaletteIcon,
+    },
+    {
+    title: "Database",
+    url: "/database",
+    icon: DatabaseIcon,
     },
     { title: "Integrations",
     url: "/integrations",
