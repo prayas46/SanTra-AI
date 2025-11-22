@@ -13,7 +13,7 @@ import z from "zod";
 import { internal } from "../../../_generated/api";
 import { queryOrders, queryUserTickets, searchRecords } from "../../../db/queries";
 import { QueryResult } from "../../../db/types";
-import { executeQuery } from "../../../db/neonConnection";
+import { executeOrgQuery } from "../../../db/neonConnection";
 import rag from "../rag";
 import { supportAgent } from "../agents/supportAgent";
 import { openai } from "@ai-sdk/openai";
@@ -318,11 +318,12 @@ function formatAnswer(
 
 async function queryTable(
   tableName: string,
+  organizationId: string,
   limit: number,
   offset: number = 0,
 ): Promise<QueryResult<any>> {
   const sql = `SELECT * FROM ${tableName} ORDER BY 1 LIMIT $1 OFFSET $2`;
-  const result = await executeQuery<any>(sql, [limit, offset]);
+  const result = await executeOrgQuery<any>(organizationId, sql, [limit, offset]);
 
   return {
     rows: result.rows,
@@ -330,38 +331,64 @@ async function queryTable(
   };
 }
 
-async function queryDoctors(limit: number, offset: number = 0): Promise<QueryResult<any>> {
-  return queryTable("doctors", limit, offset);
+async function queryDoctors(
+  organizationId: string,
+  limit: number,
+  offset: number = 0,
+): Promise<QueryResult<any>> {
+  return queryTable("doctors", organizationId, limit, offset);
 }
 
-async function queryPatients(limit: number, offset: number = 0): Promise<QueryResult<any>> {
-  return queryTable("patients", limit, offset);
+async function queryPatients(
+  organizationId: string,
+  limit: number,
+  offset: number = 0,
+): Promise<QueryResult<any>> {
+  return queryTable("patients", organizationId, limit, offset);
 }
 
-async function queryAppointments(limit: number, offset: number = 0): Promise<QueryResult<any>> {
-  return queryTable("appointments", limit, offset);
+async function queryAppointments(
+  organizationId: string,
+  limit: number,
+  offset: number = 0,
+): Promise<QueryResult<any>> {
+  return queryTable("appointments", organizationId, limit, offset);
 }
 
-async function queryMedications(limit: number, offset: number = 0): Promise<QueryResult<any>> {
-  return queryTable("medications", limit, offset);
+async function queryMedications(
+  organizationId: string,
+  limit: number,
+  offset: number = 0,
+): Promise<QueryResult<any>> {
+  return queryTable("medications", organizationId, limit, offset);
 }
 
-async function queryLabResults(limit: number, offset: number = 0): Promise<QueryResult<any>> {
-  return queryTable("lab_results", limit, offset);
+async function queryLabResults(
+  organizationId: string,
+  limit: number,
+  offset: number = 0,
+): Promise<QueryResult<any>> {
+  return queryTable("lab_results", organizationId, limit, offset);
 }
 
-async function queryMedicalRecords(limit: number, offset: number = 0): Promise<QueryResult<any>> {
-  return queryTable("medical_records", limit, offset);
+async function queryMedicalRecords(
+  organizationId: string,
+  limit: number,
+  offset: number = 0,
+): Promise<QueryResult<any>> {
+  return queryTable("medical_records", organizationId, limit, offset);
 }
 
-async function listPublicTables(): Promise<string[]> {
-  const result = await executeQuery<{ table_name: string }>(
+async function listPublicTables(organizationId: string): Promise<string[]> {
+  const result = await executeOrgQuery<{ table_name: string }>(
+    organizationId,
     `
     SELECT table_name
     FROM information_schema.tables
     WHERE table_schema = 'public'
       AND table_type = 'BASE TABLE'
     `,
+    [],
   );
 
   return result.rows.map(
@@ -407,8 +434,9 @@ function computeTableMatchScore(
 
 async function findBestMatchingTable(
   question: string,
+  organizationId: string,
 ): Promise<string | null> {
-  const tables = await listPublicTables();
+  const tables = await listPublicTables(organizationId);
 
   let bestName: string | null = null;
   let bestScore = 0;
@@ -500,27 +528,27 @@ export const databaseQueryTool = createTool({
               return await queryOrders(userId, organizationId);
             }
             if (queryType === "doctors") {
-              return await queryDoctors(pageSize, offset);
+              return await queryDoctors(organizationId, pageSize, offset);
             }
             if (queryType === "patients") {
-              return await queryPatients(pageSize, offset);
+              return await queryPatients(organizationId, pageSize, offset);
             }
             if (queryType === "appointments") {
-              return await queryAppointments(pageSize, offset);
+              return await queryAppointments(organizationId, pageSize, offset);
             }
             if (queryType === "medications") {
-              return await queryMedications(pageSize, offset);
+              return await queryMedications(organizationId, pageSize, offset);
             }
             if (queryType === "lab_results") {
-              return await queryLabResults(pageSize, offset);
+              return await queryLabResults(organizationId, pageSize, offset);
             }
             if (queryType === "medical_records") {
-              return await queryMedicalRecords(pageSize, offset);
+              return await queryMedicalRecords(organizationId, pageSize, offset);
             }
             if (queryType === "search") {
-              const tableName = await findBestMatchingTable(args.query);
+              const tableName = await findBestMatchingTable(args.query, organizationId);
               if (tableName) {
-                return await queryTable(tableName, pageSize, offset);
+                return await queryTable(tableName, organizationId, pageSize, offset);
               }
             }
             return await searchRecords(args.query, organizationId, { 

@@ -2,7 +2,7 @@ import { action } from "../../_generated/server";
 import { v } from "convex/values";
 import { contentHashFromArrayBuffer } from "@convex-dev/rag";
 import rag from "../ai/rag";
-import { executeQuery } from "../../db/neonConnection";
+import { executeOrgQuery } from "../../db/neonConnection";
 
 const EXCLUDED_TABLES = ["_prisma_migrations"];
 
@@ -22,13 +22,15 @@ export const ingest = action({
     const encoder = new TextEncoder();
     const stats: Record<string, number> = {};
 
-    const tablesResult = await executeQuery<{ table_name: string }>(
+    const tablesResult = await executeOrgQuery<{ table_name: string }>(
+      args.organizationId,
       `
       SELECT table_name
       FROM information_schema.tables
       WHERE table_schema = 'public'
         AND table_type = 'BASE TABLE'
       `,
+      [],
     );
 
     const tables = tablesResult.rows
@@ -39,7 +41,7 @@ export const ingest = action({
       try {
         const sql = `${"SELECT * FROM "}${tableName} LIMIT $1`;
         const params = [limit];
-        const result = await executeQuery<any>(sql, params);
+        const result = await executeOrgQuery<any>(args.organizationId, sql, params);
 
         let ingested = 0;
         for (let i = 0; i < result.rows.length; i++) {

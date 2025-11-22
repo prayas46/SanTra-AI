@@ -1,0 +1,489 @@
+
+> shadcn-ui-monorepo@0.0.1 build E:\CODING\SanTra-AI
+> turbo build
+
+Debugger listening on ws://127.0.0.1:57893/954d65cd-9401-4ed9-a1be-21ad95e64df6
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+turbo 2.5.5
+
+ΓÇó Packages in scope: @workspace/backend, @workspace/eslint-config, @workspace/math, @workspace/typescript-config, @workspace/ui, embed, web, widget
+ΓÇó Running build in 8 packages
+ΓÇó Remote caching disabled
+embed:build: cache hit, replaying logs eb589302cc39451c
+@workspace/math:build: cache hit, replaying logs 4d91a1d49af35816
+@workspace/math:build: [?9001h[?1004h[?25l[2J[m[2;1H> @workspace/math@ build E:\CODING\SanTra-AI\packages\math
+@workspace/math:build: > tsc[6;1H]0;C:\Users\praya\AppData\Local\pnpm\pnpm.exe[?25hDebugger listening on ws://127.0.0.1:62654/f7013b69-2c9c-4797-90c2-61f2fba6c2e6
+@workspace/math:build: For help, see: https://nodejs.org/en/docs/inspector
+@workspace/math:build: Debugger attached.
+@workspace/math:build: Waiting for the debugger to disconnect...
+@workspace/math:build: [?9001l[?1004l
+embed:build: [?9001h[?1004h[?25l[2J[m[2;1H> embed@0.0.1 build E:\CODING\SanTra-AI\apps\embed
+embed:build: > vite build[5;1H]0;C:\Users\praya\AppData\Local\pnpm\pnpm.exe[?25hDebugger listening on ws://127.0.0.1:62655/2defaec3-a2d1-4d23-9704-577c00c262a8
+embed:build: For help, see: https://nodejs.org/en/docs/inspector
+embed:build: Debugger attached.
+embed:build: [36mvite v5.4.20 [32mbuilding for production...
+embed:build: [m[Ktransforming (1) [2membed.ts[22m
+embed:build: [K[25C[32m
+embed:build: Γ£ô [m3 modules transformed.
+embed:build: [K[2mdist/[36m[22mwidget.iife.js  [m[1m[2m3.75 kB[22m[2m Γöé gzip: 1.53 kB[22m[K
+embed:build: [32mΓ£ô built in 311ms[m
+embed:build: Waiting for the debugger to disconnect...
+embed:build: [?9001l[?1004l
+web:build: cache miss, executing d69f51f7f535dcf4
+widget:build: cache hit, replaying logs d386817865f79216
+widget:build: [?9001h[?1004h[?25l[2J[m[2;1H> widget@0.0.1 build E:\CODING\SanTra-AI\apps\widget
+widget:build: > next build[5;1H]0;C:\WINDOWS\system32\cmd.exe[?25hDebugger listening on ws://127.0.0.1:65517/bf25c606-b03c-4a0a-91e1-043cd1837fce
+widget:build: For help, see: https://nodejs.org/en/docs/inspector
+widget:build: Debugger attached.
+widget:build:    [38;2;173;127;168m[1mΓû▓ Next.js 15.4.5
+widget:build: [m
+widget:build:    - Environments: .env.local
+widget:build: 
+widget:build:  [37m[1m [m Creating an optimized production build ...
+widget:build: Debugger listening on ws://127.0.0.1:49698/54c99af6-
+widget:build: [8;52H-670d-4467-92f8-c6c311825369
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger attached.
+widget:build: Debugger listening on ws://127.0.0.1:49720/c879a035-
+widget:build: [8;52H-186b-463c-bcf1-e83e3c9db6e0
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger attached.
+widget:build: Debugger listening on ws://127.0.0.1:49731/99db9de6-
+widget:build: [8;52H-e154-42c3-9384-b00ced8f2b03
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger attached.
+widget:build:  [32m[1mΓ£ô[m Compiled successfully in 11.0s
+widget:build: [?25l [37m[1m [m Linting and checking validity of types  [36m.[m
+widget:build: [K[52C[8;1H [37m[1m [m Linting and checking validity of types  [36m..       [m[8;1H[K[52C[7;1H[K[52C
+widget:build:  [37m[1m [m Linting and checking validity of types  [36m...[mDebugger listening on ws://127.0.0.1:49747/3a6dfed4-b461-48b1-a36f-0e115041611a
+widget:build: For help, see: https://nodejs.org/en/docs/inspector 
+widget:build: [52C
+widget:build: Debugger listening on ws://127.0.0.1:49749/f4cec3d0-
+widget:build: [8;52H-39d9-48a2-9fa3-3de514e5b0f3[25C
+widget:build: [52C
+widget:build: [K[52C[8;1H [37m[1m [m Linting and checking validity of types  [36m.        [m[8;45HFor help, see: https://nodejs.org/en/docs/inspector
+widget:build: [52C
+widget:build: Debugger attached.
+widget:build: [52C
+widget:build: [K[52C[8;1H [37m[1m [m Linting and checking validity of types  [36m..       [m[8;46HDebugger attached.
+widget:build: [52C[8;1H [37m[1m [m Linting and checking validity of types  [36m...      [m
+widget:build: [K[52C[8;1H[K[52C[7;1H [37m[1m [m Linting and checking validity of types  [36m.        [m[7;1H                                                    [7;105H[6;1H [37m[1m [m Linting and checking validity of types  [36m..       [m[6;1H[K[52C[5;1H [37m[1m [m Linting and checking validity of types  [36m...      [m[5;1H                                                    [5;105H[4;1H [37m[1m [m Linting and checking validity of types  [36m.        [m[4;1H                                                    [4;105H[3;1H [37m[1m [m Linting and checking validity of types  [36m..       [m[3;1H[K[52C[2;1H [37m[1m [m Linting and checking validity of types  [36m...      [m[2;1H[K[52C[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..[m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m..       [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m...      [m[H                                                    [1;105H[H [37m[1m [m Linting and checking validity of types  [36m.        [m[H                                                    [1;105H[H [32m[1mΓ£ô[m Linting and checking validity of types[K
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[mDebugger listening on ws://127.0.0.1:64238/00a22233-87d1-4ac1-bb9b-c147823d4889
+widget:build: For help, see: https://nodejs.org/en/docs/inspector
+widget:build: Debugger listening on ws://127.0.0.1:64236/2abd57c9-9b81-4562-8a2b-f86fb65dcd9a
+widget:build: For help, see: https://nodejs.org/en/docs/inspector
+widget:build: Debugger listening on ws://127.0.0.1:64237/25497531-
+widget:build: [8;52H-31a0-49a3-93c4-ba3998af9997[25C
+widget:build: For help, see: https://nodejs.org/en/docs/inspector 
+widget:build: Debugger listening on ws://127.0.0.1:64239/a4366e75-
+widget:build: [8;52H-8904-41d1-ada5-eee9690cab83[25C
+widget:build: For help, see: https://nodejs.org/en/docs/inspector 
+widget:build: Debugger listening on ws://127.0.0.1:64240/8dc91ad2-
+widget:build: [8;52H-9ea9-4eb6-87e8-d519b70dfe18[25C
+widget:build: For help, see: https://nodejs.org/en/docs/inspector 
+widget:build: Debugger listening on ws://127.0.0.1:64241/907d8eb4-
+widget:build: [8;52H-4ac8-4e23-a26a-d26054c1f01d[25C
+widget:build: For help, see: https://nodejs.org/en/docs/inspector 
+widget:build: Debugger listening on ws://127.0.0.1:64242/5fcc0845-
+widget:build: [8;52H-58ac-4979-814b-8c15ba2d24fb[25C
+widget:build: For help, see: https://nodejs.org/en/docs/inspector 
+widget:build: [52C
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[mDebugger attached.
+widget:build: Debugger attached.[34C
+widget:build: Debugger attached.[34C
+widget:build: Debugger attached.[34C
+widget:build: Debugger attached.[34C
+widget:build: Debugger attached.[34C
+widget:build: Debugger attached.[34C
+widget:build: [52C
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting page data  [36m...[m
+widget:build:  [32m[1mΓ£ô[m Collecting page data[K
+widget:build: [?25h
+widget:build: [?25l [37m[1m [m Generating static pages (0/5)  [36m[    ][m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Generating static pages (0/5)  [36m[=   ][m
+widget:build: [K[52C
+widget:build: Debugger listening on ws://127.0.0.1:49687/4170fd2b-[?25h
+widget:build: [8;52H-0a71-4190-ae62-ef2414d410d2
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger listening on ws://127.0.0.1:49688/fc88bfe7-
+widget:build: [8;52H-b0a8-4f54-a200-a821e78d3683
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger listening on ws://127.0.0.1:49690/016515a0-
+widget:build: [8;52H-276a-4ecd-a257-dc64c2421af9
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger listening on ws://127.0.0.1:49691/965e6423-
+widget:build: [8;52H-f60d-40aa-ae4d-ba9b180c378a
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger listening on ws://127.0.0.1:49692/fb4562f2-
+widget:build: [8;52H-5c7d-41e8-9749-353411c4df44
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger listening on ws://127.0.0.1:49693/2e968480-
+widget:build: [8;52H-2c3d-4910-8057-3bb5d9418f7b
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger listening on ws://127.0.0.1:49694/e881a30c-
+widget:build: [8;52H-2e70-49e4-a34d-17b09ef9094d
+widget:build: For help, see: https://nodejs.org/en/docs/inspector [9;1H
+widget:build: Debugger attached.
+widget:build: Debugger attached.
+widget:build: Debugger attached.
+widget:build: Debugger attached.
+widget:build: Debugger attached.
+widget:build: Debugger attached.
+widget:build: Debugger attached.
+widget:build:  [32m[1mΓ£ô[m Generating static pages (5/5)
+widget:build: [?25l [37m[1m [m Finalizing page optimization  [36m. [37m[1m [m Collecting buil
+widget:build: [8;52Hld traces  [36m.[K[41C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[K[16C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[K[18C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[m
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[m
+widget:build: [K[52C
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build:  [37m[1m [m Finalizing page optimization  [36m..[K[17C[m
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m..[K[22C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m...[K[21C[m
+widget:build: [K[52C
+widget:build:  [37m[1m [m Collecting build traces  [36m.[K[23C[m
+widget:build: [K[52C
+widget:build:  [32m[1mΓ£ô[m Collecting build traces    
+widget:build: [?25h
+widget:build:  [32m[1mΓ£ô[m Finalizing page optimization[K
+widget:build: 
+widget:build: [4mRoute (app)[24m                                 [K[4mSize[24m  [4mFi[24m
+widget:build: [4m[8;52Hirst Load JS[24m[K
+widget:build: Γöî ╞Æ /                                     140 kB    
+widget:build: [8;52H 
+widget:build:      [37m[1m261 kB[m[K
+widget:build: Γöö Γùï /_not-found                            992 B    
+widget:build: [8;52H 
+widget:build:      [37m[1m101 kB[m[K
+widget:build: + First Load JS shared by all[37m[1m[13C100 kB[m    [9;1H
+widget:build:   Γö£ chunks/22c58cab-2b4cf365510acaf5.js  54.1 kB    
+widget:build:   Γö£ chunks/742-831678f53796e675.js       43.9 kB    
+widget:build:   Γöö other shared chunks (total)          2.01 kB    
+widget:build: 
+widget:build: 
+widget:build: Γùï  (Static)   prerendered as static content
+widget:build: ╞Æ  (Dynamic)  server-rendered on demand
+widget:build: 
+widget:build: Waiting for the debugger to disconnect...
+widget:build: [?9001l[?1004l
+web:build: 
+web:build: > web@0.0.1 build E:\CODING\SanTra-AI\apps\web
+web:build: > next build
+web:build: 
+web:build: Debugger listening on ws://127.0.0.1:57908/7a5f6b8f-d62c-4573-8200-1f0fe0f1829d
+web:build: For help, see: https://nodejs.org/en/docs/inspector
+web:build: Debugger attached.
+web:build:    Γû▓ Next.js 15.4.5
+web:build:    - Environments: .env.local
+web:build:    - Experiments (use with caution):
+web:build:      ┬╖ clientTraceMetadata
+web:build: 
+web:build:    Creating an optimized production build ...
+web:build:  Γ£ô Compiled successfully in 55s
+web:build:    Linting and checking validity of types ...
+web:build: Debugger listening on ws://127.0.0.1:51125/eb9eacef-171f-4f98-bc9c-0629f22315a8
+web:build: For help, see: https://nodejs.org/en/docs/inspector
+web:build: Debugger listening on ws://127.0.0.1:51124/ad2dbdaa-9b28-4ea1-8d8b-9e8bbcde194e
+web:build: For help, see: https://nodejs.org/en/docs/inspector
+web:build: Debugger attached.
+web:build: Debugger attached.

@@ -21,7 +21,7 @@ export default defineSchema({
 
   plugins: defineTable({
     organizationId: v.string(),
-    service: v.union(v.literal("vapi")),
+    service: v.union(v.literal("vapi"), v.literal("database")),
     secretName: v.string(),
   })
   .index("by_organization_id", ["organizationId"])
