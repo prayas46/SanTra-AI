@@ -6,7 +6,11 @@ import { upsertSecret } from "../lib/secrets"
 export const upsert = internalAction({
   args: {
     organizationId: v.string(),
-    service: v.union(v.literal("vapi")),
+    service: v.union(
+      v.literal("vapi"),
+      v.literal("voice_nav"),
+      v.literal("database"),
+    ),
     value: v.any(),
   },
   handler: async (ctx, args) => {
