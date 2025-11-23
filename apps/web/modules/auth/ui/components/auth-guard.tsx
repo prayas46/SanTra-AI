@@ -1,26 +1,20 @@
 "use client"
 
-import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import { AuthLayout } from "../layouts/auth-layout";
 import { SignInView } from "../views/sign-in-view";
-import { Sign } from "crypto";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 
-export const AuthGuard = ({ children }:{ children: React.ReactNode }) => {
-    return (
-        <> 
-            <AuthLoading>
-                <AuthLayout>
-                   <p>Loading...</p> 
-                </AuthLayout>
-            </AuthLoading>
-            <Authenticated>
-                {children}
-            </Authenticated>
-            <Unauthenticated>
-                <AuthLayout>
-                   <SignInView />
-                </AuthLayout>
-            </Unauthenticated>
-        </>
-    )
-}
+export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <SignedIn>
+        {children}
+      </SignedIn>
+      <SignedOut>
+        <AuthLayout>
+          <SignInView />
+        </AuthLayout>
+      </SignedOut>
+    </>
+  );
+};
