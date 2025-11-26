@@ -1,8 +1,8 @@
-# 🏥 SanTra-AI
+# 💬 SanTra-AI
 
 **Next-Generation AI-Powered Customer Support Platform**
 
-SanTra-AI is a comprehensive customer support solution that combines conversational AI, voice integration, and real-time chat widgets. Designed with healthcare and business applications in mind, it provides seamless customer engagement through multiple channels.
+SanTra-AI is a comprehensive customer support solution that combines conversational AI, voice integration, and real-time chat widgets. Designed for businesses across industries — from Blinkit-style quick-commerce storefronts to resort websites and healthcare providers — it provides seamless customer engagement through multiple channels.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/prayas46/SanTra-AI)
 
@@ -14,8 +14,21 @@ SanTra-AI is a comprehensive customer support solution that combines conversatio
 - 👥 **Organization Management** - Multi-tenant support with Clerk authentication
 - 📊 **Real-time Analytics** - Track conversations and customer interactions
 - 🔧 **Customizable Settings** - Configurable widget appearance and behavior
-- 🏥 **Healthcare Focused** - Optimized for medical and healthcare customer support
+- 🏥 **Healthcare Ready** - Optimized for healthcare and other regulated-industry customer support
 - 🌐 **Multi-Platform** - Web dashboard, embeddable widget, and standalone components
+- 🕒 **24/7 Self-Service Support** - Automate FAQs and repetitive queries for any business
+- 🧾 **Contact & Session History** - Track conversations and sessions for rich customer context
+- 🔌 **Plugin-Based Integrations** - Extend the platform with third-party tools and services
+- 🧠 **File-Aware Conversations** - Use uploaded documents and media to enrich support flows
+
+## 💼 Business Use Cases
+
+SanTra-AI can be embedded into a wide range of businesses:
+
+- 🛒 **E-commerce & Q-commerce** - Power product discovery and support for Blinkit-style storefronts
+- 🏖️ **Hospitality & Resorts** - Answer FAQs and handle booking inquiries on resort websites
+- 🏥 **Healthcare Providers** - Support clinics and hospitals with patient queries and triage
+- 🧩 **SaaS & Service Businesses** - Reduce support load and capture leads across your app and site
 
 ## 🏗️ Architecture
 
@@ -24,7 +37,6 @@ SanTra-AI is built as a **Turborepo monorepo** with the following structure:
 ### Applications
 - **`apps/web/`** - Main Next.js dashboard with Clerk authentication
 - **`apps/widget/`** - Embeddable Next.js widget for customer websites
-- **`apps/embed/`** - Lightweight Vite-based embeddable component
 
 ### Packages
 - **`packages/ui/`** - Shared shadcn/ui component library
@@ -67,7 +79,6 @@ SanTra-AI is built as a **Turborepo monorepo** with the following structure:
    # Or start individual apps
    pnpm --filter web dev          # Main dashboard (port 3000)
    pnpm --filter widget dev       # Widget app (port 3001)
-   pnpm --filter embed dev        # Embed app (port 3002)
    ```
 
 ## 🛠️ Development
@@ -142,7 +153,7 @@ const sendMessage = useMutation(api.messages.send);
 
 ## 🏥 Healthcare Applications
 
-SanTra-AI is specifically designed for healthcare organizations:
+For healthcare organizations, SanTra-AI provides:
 
 - **Patient Support** - 24/7 automated patient inquiries
 - **Appointment Scheduling** - AI-powered booking assistance
