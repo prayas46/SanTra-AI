@@ -22,11 +22,13 @@ SanTra-AI is a comprehensive customer support solution that combines conversatio
 SanTra-AI is built as a **Turborepo monorepo** with the following structure:
 
 ### Applications
+
 - **`apps/web/`** - Main Next.js dashboard with Clerk authentication
 - **`apps/widget/`** - Embeddable Next.js widget for customer websites
 - **`apps/embed/`** - Lightweight Vite-based embeddable component
 
 ### Packages
+
 - **`packages/ui/`** - Shared shadcn/ui component library
 - **`packages/backend/`** - Convex backend with AI agents and real-time sync
 - **`packages/math/`** - Utility mathematical functions
@@ -36,6 +38,7 @@ SanTra-AI is built as a **Turborepo monorepo** with the following structure:
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - **Node.js 20+**
 - **pnpm 10.15.0+**
 - **Convex account** for backend services
@@ -43,27 +46,31 @@ SanTra-AI is built as a **Turborepo monorepo** with the following structure:
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd SanTra-AI
    ```
 
 2. **Install dependencies**
+
    ```bash
    pnpm install
    ```
 
 3. **Set up Convex backend**
+
    ```bash
    cd packages/backend
    pnpm run setup
    ```
 
 4. **Start development servers**
+
    ```bash
    # Start all applications
    pnpm dev
-   
+
    # Or start individual apps
    pnpm --filter web dev          # Main dashboard (port 3000)
    pnpm --filter widget dev       # Widget app (port 3001)
@@ -106,8 +113,8 @@ Components are automatically placed in `packages/ui/src/components/` for sharing
 Import shared components from the UI package:
 
 ```tsx
-import { Button } from "@workspace/ui/components/button"
-import { Dialog } from "@workspace/ui/components/dialog"
+import { Button } from "@workspace/ui/components/button";
+import { Dialog } from "@workspace/ui/components/dialog";
 ```
 
 ## 🧩 Integration
@@ -120,8 +127,8 @@ import { Dialog } from "@workspace/ui/components/dialog"
 4. **Preview integration** using our demo page
 
 ```html
-<script 
-  src="https://san-tra-ai-widget.vercel.app/widget.js" 
+<script
+  src="https://san-tra-ai-widget.vercel.app/widget.js"
   data-organization-id="your-org-id"
 ></script>
 ```
@@ -132,8 +139,8 @@ The platform uses Convex for real-time data synchronization:
 
 ```typescript
 // Query conversations
-const conversations = useQuery(api.conversations.list, { 
-  organizationId: "your-org-id" 
+const conversations = useQuery(api.conversations.list, {
+  organizationId: "your-org-id",
 });
 
 // Send message
@@ -152,7 +159,7 @@ SanTra-AI is specifically designed for healthcare organizations:
 
 ## 🌟 Technology Stack
 
-- **Frontend**: Next.js 15, React 19, TypeScript
+- **Frontend**: Next.js 15.5.9, React 19, TypeScript
 - **Styling**: Tailwind CSS, shadcn/ui, Radix UI
 - **Backend**: Convex (BaaS), Convex Agents (AI)
 - **Authentication**: Clerk
