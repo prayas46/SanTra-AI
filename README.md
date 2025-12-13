@@ -1,10 +1,34 @@
 # 🏥 SanTra-AI
 
-**Next-Generation AI-Powered Customer Support Platform**
+**Enterprise-Grade AI Customer Support Platform for Modern Businesses**
 
-SanTra-AI is a comprehensive customer support solution that combines conversational AI, voice integration, and real-time chat widgets. Designed with healthcare and business applications in mind, it provides seamless customer engagement through multiple channels.
+SanTra-AI is an AI-powered, multi-channel customer support platform that combines conversational agents, voice assistants, and real-time chat widgets. It is designed to serve organizations in any industry, with additional capabilities for regulated environments such as healthcare and other compliance-heavy domains.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/prayas46/SanTra-AI)
+
+## 📚 Table of Contents
+
+- **Overview**
+- **Features**
+- **Architecture**
+- **Getting Started**
+- **Development Workflow**
+- **Integration Guide**
+- **Use Cases Across Industries**
+- **Technology Stack**
+- **Data Model**
+- **Security, Privacy & Compliance**
+- **Contributing**
+- **License**
+- **Support**
+
+## 🔎 Overview
+
+SanTra-AI is built as a Turborepo-based monorepo with separate applications for the admin dashboard, embeddable widgets, and backend services powered by Convex. It is designed for teams that need:
+
+- Centralized management of organizations, agents, and integrations.
+- Real-time, AI-assisted conversations across web and voice channels.
+- An opinionated but extensible architecture suitable for production deployments.
 
 ## ✨ Features
 
@@ -14,28 +38,32 @@ SanTra-AI is a comprehensive customer support solution that combines conversatio
 - 👥 **Organization Management** - Multi-tenant support with Clerk authentication
 - 📊 **Real-time Analytics** - Track conversations and customer interactions
 - 🔧 **Customizable Settings** - Configurable widget appearance and behavior
-- 🏥 **Healthcare Focused** - Optimized for medical and healthcare customer support
 - 🌐 **Multi-Platform** - Web dashboard, embeddable widget, and standalone components
 
 ## 🏗️ Architecture
 
-SanTra-AI is built as a **Turborepo monorepo** with the following structure:
+SanTra-AI is organized as a **Turborepo-based monorepo** with clearly separated deployable applications and shared packages:
 
 ### Applications
+
 - **`apps/web/`** - Main Next.js dashboard with Clerk authentication
 - **`apps/widget/`** - Embeddable Next.js widget for customer websites
 - **`apps/embed/`** - Lightweight Vite-based embeddable component
 
 ### Packages
+
 - **`packages/ui/`** - Shared shadcn/ui component library
 - **`packages/backend/`** - Convex backend with AI agents and real-time sync
 - **`packages/math/`** - Utility mathematical functions
 - **`packages/eslint-config/`** - Shared ESLint configurations
 - **`packages/typescript-config/`** - Shared TypeScript configurations
 
-## 🚀 Quick Start
+## 🚀 Getting Started
+
+Use this guide to spin up a local development environment for evaluation or contribution.
 
 ### Prerequisites
+
 - **Node.js 20+**
 - **pnpm 10.15.0+**
 - **Convex account** for backend services
@@ -43,34 +71,40 @@ SanTra-AI is built as a **Turborepo monorepo** with the following structure:
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd SanTra-AI
    ```
 
 2. **Install dependencies**
+
    ```bash
    pnpm install
    ```
 
 3. **Set up Convex backend**
+
    ```bash
    cd packages/backend
    pnpm run setup
    ```
 
 4. **Start development servers**
+
    ```bash
    # Start all applications
    pnpm dev
-   
+
    # Or start individual apps
    pnpm --filter web dev          # Main dashboard (port 3000)
    pnpm --filter widget dev       # Widget app (port 3001)
    pnpm --filter embed dev        # Embed app (port 3002)
    ```
 
-## 🛠️ Development
+## 🛠️ Development Workflow
+
+The following scripts are used for local development, CI, and production builds.
 
 ### Available Scripts
 
@@ -106,11 +140,13 @@ Components are automatically placed in `packages/ui/src/components/` for sharing
 Import shared components from the UI package:
 
 ```tsx
-import { Button } from "@workspace/ui/components/button"
-import { Dialog } from "@workspace/ui/components/dialog"
+import { Button } from "@workspace/ui/components/button";
+import { Dialog } from "@workspace/ui/components/dialog";
 ```
 
-## 🧩 Integration
+## 🧩 Integration Guide
+
+Use SanTra-AI in your own applications via the embeddable widget and Convex APIs.
 
 ### Widget Integration
 
@@ -120,8 +156,8 @@ import { Dialog } from "@workspace/ui/components/dialog"
 4. **Preview integration** using our demo page
 
 ```html
-<script 
-  src="https://san-tra-ai-widget.vercel.app/widget.js" 
+<script
+  src="https://san-tra-ai-widget.vercel.app/widget.js"
   data-organization-id="your-org-id"
 ></script>
 ```
@@ -132,23 +168,23 @@ The platform uses Convex for real-time data synchronization:
 
 ```typescript
 // Query conversations
-const conversations = useQuery(api.conversations.list, { 
-  organizationId: "your-org-id" 
+const conversations = useQuery(api.conversations.list, {
+  organizationId: "your-org-id",
 });
 
 // Send message
 const sendMessage = useMutation(api.messages.send);
 ```
 
-## 🏥 Healthcare Applications
+## 💼 Use Cases Across Industries
 
-SanTra-AI is specifically designed for healthcare organizations:
+SanTra-AI is designed for organizations across industries that require reliable, high-touch customer support and automation. Example scenarios include:
 
-- **Patient Support** - 24/7 automated patient inquiries
-- **Appointment Scheduling** - AI-powered booking assistance
-- **Medical Information** - HIPAA-compliant information sharing
-- **Emergency Triage** - Priority routing for urgent cases
-- **Multi-language Support** - Serve diverse patient populations
+- **Customer Support Automation** - 24/7 handling of frequent inquiries for customers, patients, or clients
+- **Appointment & Booking Assistance** - AI-powered scheduling for clinics, services, and consultations
+- **Information & Knowledge Delivery** - Consistent, policy-aware information sharing based on your knowledge sources
+- **Triage & Prioritization** - Routing urgent or high-priority cases to the right queues or teams
+- **Multi-language Support** - Serve diverse populations across regions and markets
 
 ## 🌟 Technology Stack
 
@@ -172,13 +208,15 @@ Core entities in the Convex schema:
 - **`messages`** - Individual chat messages
 - **`files`** - Uploaded documents and media
 
-## 🔐 Security & Compliance
+## 🔐 Security, Privacy & Compliance
 
-- **HIPAA Compliance** - Healthcare data protection
-- **SOC 2 Type II** - Enterprise security standards
-- **End-to-end Encryption** - Secure data transmission
-- **Role-based Access** - Organization-level permissions
-- **Audit Logging** - Comprehensive activity tracking
+Security is a first-class concern. SanTra-AI is intended to be deployed in environments that follow strong organizational security and compliance practices.
+
+- **Regulated-environment ready** – Can be integrated into environments that must comply with regulations (for example, HIPAA in healthcare); overall compliance depends on your hosting and operational controls.
+- **Enterprise-ready controls** – Supports standard security practices (least-privilege access, logging, separation of concerns) when combined with your existing IAM and observability stack.
+- **Secure transport** – Intended to be served over HTTPS/TLS for data-in-transit protection.
+- **Role-based access** – Organization-level permissions via Clerk authentication and backend authorization.
+- **Auditability** – Convex backend and logging integrations can be used to build detailed activity trails for sensitive operations.
 
 ## 🤝 Contributing
 
