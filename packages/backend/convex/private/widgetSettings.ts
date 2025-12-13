@@ -15,6 +15,7 @@ export const upsert = mutation({
         vapiSettings: v.object({
             assistantId: v.optional(v.string()),
             phoneNumber: v.optional(v.string()),
+            workflowId: v.optional(v.string()),
         }),
     },
     handler: async (ctx, args) => {

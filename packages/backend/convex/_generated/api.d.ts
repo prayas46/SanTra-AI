@@ -8,10 +8,14 @@
  * @module
  */
 
+import type * as db_neonConnection from "../db/neonConnection.js";
+import type * as db_queries from "../db/queries.js";
+import type * as db_types from "../db/types.js";
 import type * as lib_extractTextContent from "../lib/extractTextContent.js";
 import type * as lib_secrets from "../lib/secrets.js";
 import type * as playground from "../playground.js";
 import type * as private_conversations from "../private/conversations.js";
+import type * as private_database from "../private/database.js";
 import type * as private_files from "../private/files.js";
 import type * as private_messages from "../private/messages.js";
 import type * as private_plugins from "../private/plugins.js";
@@ -24,14 +28,19 @@ import type * as public_messages from "../public/messages.js";
 import type * as public_organization from "../public/organization.js";
 import type * as public_secrets from "../public/secrets.js";
 import type * as public_widgetSettings from "../public/widgetSettings.js";
+import type * as system_ai_agents_ragAgent from "../system/ai/agents/ragAgent.js";
 import type * as system_ai_agents_supportAgent from "../system/ai/agents/supportAgent.js";
 import type * as system_ai_constants from "../system/ai/constants.js";
 import type * as system_ai_rag from "../system/ai/rag.js";
+import type * as system_ai_tools_databaseQueryTool from "../system/ai/tools/databaseQueryTool.js";
 import type * as system_ai_tools_escalateConversation from "../system/ai/tools/escalateConversation.js";
 import type * as system_ai_tools_resolveConversation from "../system/ai/tools/resolveConversation.js";
 import type * as system_ai_tools_search from "../system/ai/tools/search.js";
 import type * as system_contactSessions from "../system/contactSessions.js";
 import type * as system_conversations from "../system/conversations.js";
+import type * as system_db_ingestNeonToRag from "../system/db/ingestNeonToRag.js";
+import type * as system_db_testConfiguredDatabase from "../system/db/testConfiguredDatabase.js";
+import type * as system_db_testConnection from "../system/db/testConnection.js";
 import type * as system_plugins from "../system/plugins.js";
 import type * as system_secrets from "../system/secrets.js";
 import type * as users from "../users.js";
@@ -51,10 +60,14 @@ import type {
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  "db/neonConnection": typeof db_neonConnection;
+  "db/queries": typeof db_queries;
+  "db/types": typeof db_types;
   "lib/extractTextContent": typeof lib_extractTextContent;
   "lib/secrets": typeof lib_secrets;
   playground: typeof playground;
   "private/conversations": typeof private_conversations;
+  "private/database": typeof private_database;
   "private/files": typeof private_files;
   "private/messages": typeof private_messages;
   "private/plugins": typeof private_plugins;
@@ -67,14 +80,19 @@ declare const fullApi: ApiFromModules<{
   "public/organization": typeof public_organization;
   "public/secrets": typeof public_secrets;
   "public/widgetSettings": typeof public_widgetSettings;
+  "system/ai/agents/ragAgent": typeof system_ai_agents_ragAgent;
   "system/ai/agents/supportAgent": typeof system_ai_agents_supportAgent;
   "system/ai/constants": typeof system_ai_constants;
   "system/ai/rag": typeof system_ai_rag;
+  "system/ai/tools/databaseQueryTool": typeof system_ai_tools_databaseQueryTool;
   "system/ai/tools/escalateConversation": typeof system_ai_tools_escalateConversation;
   "system/ai/tools/resolveConversation": typeof system_ai_tools_resolveConversation;
   "system/ai/tools/search": typeof system_ai_tools_search;
   "system/contactSessions": typeof system_contactSessions;
   "system/conversations": typeof system_conversations;
+  "system/db/ingestNeonToRag": typeof system_db_ingestNeonToRag;
+  "system/db/testConfiguredDatabase": typeof system_db_testConfiguredDatabase;
+  "system/db/testConnection": typeof system_db_testConnection;
   "system/plugins": typeof system_plugins;
   "system/secrets": typeof system_secrets;
   users: typeof users;

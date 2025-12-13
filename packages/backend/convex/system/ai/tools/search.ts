@@ -30,11 +30,26 @@ export const search = createTool({
 
         const orgId = conversation.organizationId;
 
-        const searchResult = await rag.search(ctx, {
-            namespace: orgId,
+        const primaryNamespace = orgId;
+        const fallbackNamespace = "global";
+
+        let searchResult = await rag.search(ctx, {
+            namespace: primaryNamespace,
             query: args.query,
             limit: 5,
         });
+
+        if (!searchResult.text || searchResult.text.trim().length === 0) {
+            const globalResult = await rag.search(ctx, {
+                namespace: fallbackNamespace,
+                query: args.query,
+                limit: 5,
+            });
+
+            if (globalResult.text && globalResult.text.trim().length > 0) {
+                searchResult = globalResult;
+            }
+        }
 
         const contextText = `Found results in ${searchResult.entries
             .map((e) => e.title || null)

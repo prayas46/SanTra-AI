@@ -14,6 +14,7 @@ interface PluginCardProps {
     serviceImage: string;
     features: Feature[];
     onSubmit: () => void;
+    actionLabel?: string;
 }
 
 // Refactored code
@@ -23,6 +24,7 @@ export const PluginCard = ({
   serviceImage,
   features,
   onSubmit,
+  actionLabel,
 }: PluginCardProps) => {
   return (
     <div className="h-fit w-full rounded-lg border bg-background p-8">
@@ -80,7 +82,7 @@ export const PluginCard = ({
             onClick={onSubmit}
             variant="default"
         >
-            Connect
+            {actionLabel ?? "Connect"}
             <PlugIcon />
         </Button>
     </div>
