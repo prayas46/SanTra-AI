@@ -2,6 +2,8 @@ import { ConvexError, v } from "convex/values";
 import { action, query } from "../_generated/server";
 import { components, internal } from "../_generated/api";
 import { supportAgent } from "../system/ai/agents/supportAgent";
+import { runRagAgent } from "../system/ai/agents/ragAgent";
+
 import { paginationOptsValidator } from "convex/server";
 import { escalateConversation } from "../system/ai/tools/escalateConversation";
 import { resolveConversation } from "../system/ai/tools/resolveConversation";
@@ -30,15 +32,12 @@ export const create = action({
             });
         }
 
-
         const conversation = await ctx.runQuery(
             internal.system.conversations.getByThreadId,
             {
                 threadId: args.threadId,
             },
         );
-
-
 
         if (!conversation) {
             throw new ConvexError({
@@ -47,7 +46,6 @@ export const create = action({
             });
         }
 
-
         if (conversation.status === "resolved") {
             throw new ConvexError({
                 code: "BAD_REQUEST",
@@ -55,26 +53,38 @@ export const create = action({
             });
         }
 
-
         //TODO Implement Subscription Check
 
-        const shouldTriggerAgent =
-            conversation.status === "unresolved";
+        const shouldTriggerAgent = conversation.status === "unresolved";
 
         if (shouldTriggerAgent) {
-            await supportAgent.generateText(
-                ctx,
-                { threadId: args.threadId },
-                {
+            // Prefer the RAG + Database orchestrator agent.
+            try {
+                await runRagAgent({
+                    ctx,
+                    threadId: args.threadId,
+                    organizationId: conversation.organizationId,
+                    userId: contactSession?.email ?? undefined,
                     prompt: args.prompt,
-                    tools: {
-                        escalateConversationTool: escalateConversation,
-                        resolveConversationTool: resolveConversation,
-                        searchTool: search,
-                        databaseQueryTool,
+                });
+            } catch (error) {
+                console.error("[messages.create] runRagAgent failed, falling back to supportAgent", error);
+
+                // Fallback to the original supportAgent behavior with tools
+                await supportAgent.generateText(
+                    ctx,
+                    { threadId: args.threadId },
+                    {
+                        prompt: args.prompt,
+                        tools: {
+                            escalateConversationTool: escalateConversation,
+                            resolveConversationTool: resolveConversation,
+                            searchTool: search,
+                            databaseQueryTool,
+                        },
                     },
-                },
-            );
+                );
+            }
         } else {
             await saveMessage(ctx, components.agent, {
                 threadId: args.threadId,
@@ -83,7 +93,6 @@ export const create = action({
         }
     },
 });
-
 
 export const getMany = query({
     args: {

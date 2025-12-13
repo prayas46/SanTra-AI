@@ -1,10 +1,34 @@
-# 🏥 SanTra-AI
+# 💬 SanTra-AI
 
-**Next-Generation AI-Powered Customer Support Platform**
+**Enterprise-Grade AI Customer Support Platform for Modern Businesses**
 
 SanTra-AI is a comprehensive customer support solution that combines conversational AI, voice integration, and real-time chat widgets. Designed with healthcare and business applications in mind, it provides seamless customer engagement through multiple channels.
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/prayas46/SanTra-AI)
+
+## 📚 Table of Contents
+
+- **Overview**
+- **Features**
+- **Architecture**
+- **Getting Started**
+- **Development Workflow**
+- **Integration Guide**
+- **Use Cases Across Industries**
+- **Technology Stack**
+- **Data Model**
+- **Security, Privacy & Compliance**
+- **Contributing**
+- **License**
+- **Support**
+
+## 🔎 Overview
+
+SanTra-AI is built as a Turborepo-based monorepo with separate applications for the admin dashboard, embeddable widgets, and backend services powered by Convex. It is designed for teams that need:
+
+- Centralized management of organizations, agents, and integrations.
+- Real-time, AI-assisted conversations across web and voice channels.
+- An opinionated but extensible architecture suitable for production deployments.
 
 ## ✨ Features
 
@@ -16,10 +40,33 @@ SanTra-AI is a comprehensive customer support solution that combines conversatio
 - 🔧 **Customizable Settings** - Configurable widget appearance and behavior
 - 🏥 **Healthcare Focused** - Optimized for medical and healthcare customer support
 - 🌐 **Multi-Platform** - Web dashboard, embeddable widget, and standalone components
+- 🕒 **24/7 Self-Service Support** - Automate FAQs and repetitive queries for any business
+- 🧾 **Contact & Session History** - Track conversations and sessions for rich customer context
+- 🔌 **Plugin-Based Integrations** - Extend the platform with third-party tools and services
+- 🧠 **File-Aware Conversations** - Use uploaded documents and media to enrich support flows
+- 📡 **Real-time Sync** - Live updates between dashboard, widget, and backend powered by Convex
+- 🧩 **AI Agents & RAG** - Agentic workflows and retrieval-augmented generation using Convex Agents and Convex RAG
+- 🧪 **Experimentation-Friendly** - Safe playground-style environment for iterating on prompts, flows, and bots
+- 🧱 **Shared UI Library** - Centralized design system and components via the `@workspace/ui` package
+- 🧮 **Shared Utilities** - Reusable math and utility functions via the `@workspace/math` package
+
+## 💼 Use Cases Across Industries
+
+SanTra-AI can be embedded into a wide range of businesses and industries. Common scenarios include:
+
+- 🛒 **E-commerce & Q-commerce** - Power product discovery and support for Blinkit-style storefronts
+- 🏖️ **Hospitality & Resorts** - Answer FAQs and handle booking inquiries on resort websites
+- 🏥 **Healthcare Providers** - Support clinics and hospitals with patient queries and triage
+- 🧩 **SaaS & Service Businesses** - Reduce support load and capture leads across your app and site
+- 🤝 **Customer Support Automation** - 24/7 handling of frequent inquiries for customers, patients, or clients
+- 📅 **Appointment & Booking Assistance** - AI-powered scheduling for clinics, services, and consultations
+- 📚 **Information & Knowledge Delivery** - Consistent, policy-aware information sharing based on your knowledge sources
+- 🚨 **Triage & Prioritization** - Routing urgent or high-priority cases to the right queues or teams
+- 🌍 **Multi-language Support** - Serve diverse populations across regions and markets
 
 ## 🏗️ Architecture
 
-SanTra-AI is built as a **Turborepo monorepo** with the following structure:
+SanTra-AI is organized as a **Turborepo-based monorepo** with clearly separated deployable applications and shared packages:
 
 ### Applications
 
@@ -35,7 +82,9 @@ SanTra-AI is built as a **Turborepo monorepo** with the following structure:
 - **`packages/eslint-config/`** - Shared ESLint configurations
 - **`packages/typescript-config/`** - Shared TypeScript configurations
 
-## 🚀 Quick Start
+## 🚀 Getting Started
+
+Use this guide to spin up a local development environment for evaluation or contribution.
 
 ### Prerequisites
 
@@ -77,7 +126,9 @@ SanTra-AI is built as a **Turborepo monorepo** with the following structure:
    pnpm --filter embed dev        # Embed app (port 3002)
    ```
 
-## 🛠️ Development
+## 🛠️ Development Workflow
+
+The following scripts are used for local development, CI, and production builds.
 
 ### Available Scripts
 
@@ -117,7 +168,9 @@ import { Button } from "@workspace/ui/components/button";
 import { Dialog } from "@workspace/ui/components/dialog";
 ```
 
-## 🧩 Integration
+## 🧩 Integration Guide
+
+Use SanTra-AI in your own applications via the embeddable widget and Convex APIs.
 
 ### Widget Integration
 
@@ -147,26 +200,22 @@ const conversations = useQuery(api.conversations.list, {
 const sendMessage = useMutation(api.messages.send);
 ```
 
-## 🏥 Healthcare Applications
-
-SanTra-AI is specifically designed for healthcare organizations:
-
-- **Patient Support** - 24/7 automated patient inquiries
-- **Appointment Scheduling** - AI-powered booking assistance
-- **Medical Information** - HIPAA-compliant information sharing
-- **Emergency Triage** - Priority routing for urgent cases
-- **Multi-language Support** - Serve diverse patient populations
-
 ## 🌟 Technology Stack
 
-- **Frontend**: Next.js 15.5.9, React 19, TypeScript
-- **Styling**: Tailwind CSS, shadcn/ui, Radix UI
-- **Backend**: Convex (BaaS), Convex Agents (AI)
-- **Authentication**: Clerk
+- **Frontend**: Next.js 15 (web & widget), React 19, TypeScript, Vite (embed app)
+- **Styling & UI**: Tailwind CSS, shadcn/ui, Radix UI, lucide-react, Dicebear avatars, Embla Carousel, Recharts, Sonner toasts, markdown rendering with react-markdown + remark-gfm
+- **Backend & Realtime**: Convex (BaaS), Convex Agents, convex-helpers, WebSockets (`ws`)
+- **AI & LLM Orchestration**: Vercel AI SDK (`ai`), OpenAI (`@ai-sdk/openai`), Google (`@ai-sdk/google`), Convex RAG (`@convex-dev/rag`)
+- **Voice AI**: Vapi server SDK (`@vapi-ai/server-sdk`) and web SDK (`@vapi-ai/web`)
+- **Authentication & Identity**: Clerk (web + backend)
+- **Data & Integrations**: Neon serverless Postgres (`@neondatabase/serverless`), AWS Secrets Manager & RDS Data (`@aws-sdk/client-secrets-manager`, `@aws-sdk/client-rds-data`)
+- **Validation & Schemas**: Zod for type-safe validation
 - **State Management**: Jotai
-- **Voice AI**: Vapi integration
-- **Build System**: Turborepo, pnpm workspaces
-- **Deployment**: Vercel (apps), Convex (backend)
+- **Observability & Monitoring**: Sentry for error tracking and performance insights
+- **On-device / Browser Models**: `@xenova/transformers` for running transformer models without a separate backend service
+- **Internal Packages**: Shared packages `@workspace/ui`, `@workspace/backend`, and `@workspace/math` for UI, backend logic, and utilities
+- **Monorepo & Tooling**: Turborepo, pnpm workspaces, TypeScript, ESLint, Prettier, Tailwind CSS 4, Vite
+- **Deployment**: Vercel (applications) and Convex (backend)
 
 ## 📊 Data Model
 
@@ -179,13 +228,15 @@ Core entities in the Convex schema:
 - **`messages`** - Individual chat messages
 - **`files`** - Uploaded documents and media
 
-## 🔐 Security & Compliance
+## 🔐 Security, Privacy & Compliance
 
-- **HIPAA Compliance** - Healthcare data protection
-- **SOC 2 Type II** - Enterprise security standards
-- **End-to-end Encryption** - Secure data transmission
-- **Role-based Access** - Organization-level permissions
-- **Audit Logging** - Comprehensive activity tracking
+Security is a first-class concern. SanTra-AI is intended to be deployed in environments that follow strong organizational security and compliance practices.
+
+- **Regulated-environment ready** – Can be integrated into environments that must comply with regulations (for example, HIPAA in healthcare); overall compliance depends on your hosting and operational controls.
+- **Enterprise-ready controls** – Supports standard security practices (least-privilege access, logging, separation of concerns) when combined with your existing IAM and observability stack.
+- **Secure transport** – Intended to be served over HTTPS/TLS for data-in-transit protection.
+- **Role-based access** – Organization-level permissions via Clerk authentication and backend authorization.
+- **Auditability** – Convex backend and logging integrations can be used to build detailed activity trails for sensitive operations.
 
 ## 🤝 Contributing
 

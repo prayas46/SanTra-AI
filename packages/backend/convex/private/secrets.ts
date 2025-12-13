@@ -34,7 +34,9 @@ export const upsert = mutation({
 
     await ctx.scheduler.runAfter(0, internal.system.secrets.upsert, {
       organizationId: orgId,
-      service: args.service,
+      // Cast to any to stay compatible with generated "vapi" types
+      // until Convex codegen is rerun to include the "database" service.
+      service: args.service as any,
       value: args.value,
     });
   },

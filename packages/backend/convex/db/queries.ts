@@ -5,7 +5,7 @@
  * All queries are multi-tenant and filtered by organizationId.
  */
 
-import { executeQuery } from "./neonConnection";
+import { executeOrgQuery } from "./neonConnection";
 import { QueryParams, QueryResult, Ticket, Order, Customer } from "./types";
 
 /**
@@ -27,7 +27,7 @@ export async function queryUserTickets(
     LIMIT 50
   `;
 
-  const result = await executeQuery<Ticket>(sql, [userId, organizationId]);
+  const result = await executeOrgQuery<Ticket>(organizationId, sql, [userId, organizationId]);
 
   return {
     rows: result.rows.map((row) => normalizeTicket(row)),
@@ -54,7 +54,7 @@ export async function queryOrders(
     LIMIT 50
   `;
 
-  const result = await executeQuery<Order>(sql, [userId, organizationId]);
+  const result = await executeOrgQuery<Order>(organizationId, sql, [userId, organizationId]);
 
   return {
     rows: result.rows.map((row) => normalizeOrder(row)),
@@ -139,7 +139,7 @@ export async function searchRecords(
     LIMIT $3 OFFSET $4
   `;
 
-  const result = await executeQuery<any>(sql, [organizationId, term, limit, offset]);
+  const result = await executeOrgQuery<any>(organizationId, sql, [organizationId, term, limit, offset]);
 
   return {
     rows: result.rows,

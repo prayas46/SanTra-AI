@@ -6,7 +6,7 @@ This document explains how to set up and use the Neon PostgreSQL database integr
 
 The system now supports **dual data sources** for the AI agent:
 
-1. **Neon PostgreSQL Database** - User-specific, real-time data (tickets, orders, customers)
+1. **PostgreSQL Database (Neon by default, per-organization)** - User-specific, real-time data (tickets, orders, customers, medical records)
 2. **Knowledge Base (RAG)** - General documentation and FAQs
 
 ### Priority Rules
@@ -77,6 +77,35 @@ This stores the URL as a **server-side secret** that's never exposed to the brow
      }
    }
    ```
+
+---
+
+## 🧩 Modular Per-Organization Database Connections
+
+In addition to the legacy global `DATABASE_URL`, the system now supports **per-organization database connections**.
+These are configured via the **Dashboard → Database** page and stored securely in AWS Secrets Manager.
+
+### How it works
+
+- Each organization has an optional secret in AWS Secrets Manager named:
+  - `tenant/{organizationId}/database`
+- The secret value is a JSON object. The exact fields depend on the provider:
+  - **Neon / other Postgres over HTTP**
+    - `{ "provider": "neon" | "other_postgres", "connectionString": "postgresql://..." }`
+  - **AWS Aurora Serverless (RDS Data API)**
+    - `{ "provider": "aws_rds", "rdsResourceArn": "...", "rdsSecretArn": "...", "rdsDatabase": "your_db", "awsRegion"?: "region-1" }`
+- At runtime, Convex uses this per-org secret (via `executeOrgQuery`) to talk to the database.
+- If no per-org secret is found, or the provider is not supported, the system falls back to the global `DATABASE_URL`.
+
+### Database dashboard workflow
+
+1. Go to **Dashboard → Database** (route: `/database`).
+2. Click **Connect Database** and enter your connection string.
+3. Click **Test connection** to verify the configured per-org database.
+4. (Optional) Use **Database inspection** to:
+   - Load the list of public tables.
+   - Preview sample rows for a selected table.
+5. (Optional) Use **RAG ingestion from database** to ingest rows from all public tables into the organization RAG namespace.
 
 ---
 
@@ -236,88 +265,6 @@ supportAgent.generateText()
 
 ---
 
-## 📝 Usage Examples
-
-### Example 1: User-Specific Query (Database Priority)
-
-**User:** "What are my recent support tickets?"
-
-**Flow:**
-
-1. Agent calls `databaseQueryTool`
-2. Tool queries Neon: `SELECT * FROM tickets WHERE user_id = ? AND organization_id = ?`
-3. Finds tickets → Returns formatted list
-4. Knowledge base is **not queried** because DB has results
-
-**Response:**
-
-```
-Found 2 ticket(s) in the database. Recent tickets:
-#tick_1: Login issue (open)
-#tick_2: Billing question (resolved)
-```
-
----
-
-### Example 2: General Query (Knowledge Base)
-
-**User:** "How do I reset my password?"
-
-**Flow:**
-
-1. Agent calls `searchTool` (recognizes this is general, not user-specific)
-2. Tool queries knowledge base via RAG
-3. Returns documentation-based answer
-
-**Response:**
-
-```
-To reset your password:
-1. Go to the login page
-2. Click "Forgot Password"
-3. Enter your email address
-4. Check your inbox for the reset link (valid for 24 hours)
-```
-
----
-
-### Example 3: Database Empty, Knowledge Base Fallback
-
-**User:** "What are my tickets?"
-
-**Flow:**
-
-1. Agent calls `databaseQueryTool`
-2. Tool queries Neon: No tickets found for this user
-3. Tool queries knowledge base: Finds documentation about tickets
-4. Interprets KB results with `SEARCH_INTERPRETER_PROMPT`
-
-**Response:**
-
-```
-I don't have any specific tickets on file for your account. However, I can help you create a new support ticket. Would you like to do that?
-```
-
----
-
-### Example 4: Both Empty
-
-**User:** "What's my order status for ORD-999?"
-
-**Flow:**
-
-1. Agent calls `databaseQueryTool`
-2. Tool queries Neon: No order found
-3. Tool queries knowledge base: No relevant docs
-
-**Response:**
-
-```
-I couldn't find any matching information in either the database or the knowledge base for this question. Would you like me to connect you with a human support agent?
-```
-
----
-
 ## 🔒 Security Features
 
 ### ✅ What's Secure
@@ -337,6 +284,8 @@ WHERE organization_id = $1 AND user_id = $2
 ```
 
 This ensures users can only see their own data within their organization.
+
+In the modular model, per-organization secrets live at `tenant/{organizationId}/database` and are only read inside Convex actions.
 
 ---
 
@@ -383,97 +332,47 @@ expect(result).toContain("ticket");
 
 ---
 
-## 🛠️ Customization
+## 🧱 Provider Options & Limitations
 
-### Adding New Query Types
+- **Supported in Convex runtime today:**
+  - `provider = "neon"` with a Neon HTTP connection string.
+  - `provider = "aws_rds"` targeting **Aurora Serverless Postgres with the RDS Data API enabled**.
+- **Config-only (falls back to global `DATABASE_URL`):**
+  - `provider = "other_postgres"` is stored in the secret and visible in the UI, but Convex will still use the Neon/global connection until a dedicated driver is added.
+- **Fallback behavior:**
+  - If a per-org secret is missing or the provider is not recognized, database queries fall back to the global `DATABASE_URL`.
 
-To add support for a new table (e.g., `invoices`):
+In other words, you can actively use **Neon** and **Aurora Serverless (AWS RDS Data API)** today. Other providers are configuration-only for now.
 
-1. **Update `db/types.ts`:**
+## 🧾 Aurora Serverless (AWS RDS Data API) Setup Checklist
 
-   ```typescript
-   export interface Invoice {
-     id: string;
-     user_id: string;
-     organization_id: string;
-     invoice_number: string;
-     // ... other fields
-   }
-   ```
+1. **Create Aurora Serverless PostgreSQL cluster**
+   - Engine: Aurora PostgreSQL-Compatible, Serverless capacity, **Data API enabled**.
+   - Note the **cluster ARN** (used as `rdsResourceArn` / “Aurora RDS resource ARN” in the Dashboard).
 
-2. **Add query function in `db/queries.ts`:**
+2. **Create an AWS Secrets Manager secret for DB credentials**
+   - Secret type: “Credentials for RDS database”, pointing to your Aurora cluster.
+   - Note the **secret ARN** (used as `rdsSecretArn` / “RDS DB secret ARN” in the Dashboard).
 
-   ```typescript
-   export async function queryUserInvoices(
-     userId: string,
-     organizationId: string
-   ): Promise<QueryResult<Invoice>> {
-     const sql = `
-       SELECT * FROM invoices
-       WHERE user_id = $1 AND organization_id = $2
-       ORDER BY created_at DESC
-       LIMIT 50
-     `;
-     return executeQuery<Invoice>(sql, [userId, organizationId]);
-   }
-   ```
+3. **Configure IAM + environment for Convex backend**
+   - IAM principal used by Convex must be allowed to call:
+     - `rds-data:ExecuteStatement` (and optionally `rds-data:BatchExecuteStatement`) on the cluster ARN.
+     - `secretsmanager:GetSecretValue` on the DB credentials secret ARN.
+   - Set environment variables:
+     - `AWS_ACCESS_KEY_ID`
+     - `AWS_SECRET_ACCESS_KEY`
+     - `AWS_REGION` (must match the region of your Aurora cluster and credentials secret).
 
-3. **Update `inferQueryType()` in `databaseQueryTool.ts`:**
+4. **Configure the database in Dashboard → Database**
+   - Provider: **AWS RDS (Postgres)**.
+   - **Aurora RDS resource ARN** = Aurora cluster ARN from step 1.
+   - **RDS DB secret ARN** = DB credentials secret ARN from step 2.
+   - **Database name** = logical database inside Aurora (for example `santra`).
+   - Click **Connect**, then **Test connection** to verify the Data API path.
 
-   ```typescript
-   function inferQueryType(
-     question: string
-   ): "tickets" | "orders" | "invoices" | "search" {
-     const q = question.toLowerCase();
-     if (q.includes("invoice") || q.includes("bill")) {
-       return "invoices";
-     }
-     // ... existing logic
-   }
-   ```
-
-4. **Update `formatAnswer()` to handle invoices**
-
----
-
-## 📊 Monitoring & Debugging
-
-### Check Connection Status
-
-Run from Convex Dashboard:
-
-```
-system/db/testConnection:test
-```
-
-### View Query Logs
-
-All database queries log to console:
-
-```
-[Database] Query execution failed: { error: "...", query: "SELECT ..." }
-[DatabaseQueryTool] Database query failed
-[DatabaseQueryTool] Knowledge base search failed
-```
-
-### Common Issues
-
-**"DATABASE_URL environment variable is not set"**
-
-- Run: `npx convex env set DATABASE_URL "postgresql://..."`
-- Restart Convex dev server
-
-**"Connection refused"**
-
-- Check Neon database is running
-- Verify connection string is correct
-- Check firewall/network settings
-
-**"No results found"**
-
-- Check that tables exist: `\dt` in psql
-- Verify test data was inserted
-- Check `organizationId` matches data in DB
+5. **Inspect and ingest data**
+   - Use **Load tables** / **Preview** to confirm tables and sample rows.
+   - Use **Ingest to RAG** to pull data from Aurora into the organization’s RAG namespace.
 
 ---
 
