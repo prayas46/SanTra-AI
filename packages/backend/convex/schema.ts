@@ -21,7 +21,11 @@ export default defineSchema({
 
   plugins: defineTable({
     organizationId: v.string(),
-    service: v.union(v.literal("vapi"), v.literal("database")),
+    service: v.union(
+      v.literal("vapi"),
+      v.literal("voice_nav"),
+      v.literal("database"),
+    ),
     secretName: v.string(),
   })
   .index("by_organization_id", ["organizationId"])
@@ -70,5 +74,33 @@ export default defineSchema({
 users: defineTable({
   name: v.string(),
 }),
+
+  voiceNavConfigs: defineTable({
+    organizationId: v.string(),
+    apiBaseUrl: v.optional(v.string()),
+    auth: v.optional(
+      v.object({
+        type: v.union(v.literal("none"), v.literal("api_key_header")),
+        headerName: v.optional(v.string()),
+      })
+    ),
+    actions: v.optional(
+      v.array(
+        v.object({
+          name: v.string(),
+          label: v.optional(v.string()),
+          description: v.optional(v.string()),
+          type: v.union(v.literal("front_end"), v.literal("rest_api")),
+          clientEvent: v.optional(v.string()),
+          method: v.optional(v.string()),
+          path: v.optional(v.string()),
+          queryParamsTemplate: v.optional(v.any()),
+          bodyTemplate: v.optional(v.any()),
+        })
+      )
+    ),
+    languages: v.optional(v.array(v.string())),
+    defaultGreeting: v.optional(v.string()),
+  }).index("by_organization_id", ["organizationId"]),
 
 });

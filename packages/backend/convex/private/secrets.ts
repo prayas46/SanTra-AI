@@ -5,7 +5,11 @@ import { internal } from "../_generated/api";
 
 export const upsert = mutation({
   args: {
-    service: v.union(v.literal("vapi"), v.literal("database")),
+    service: v.union(
+      v.literal("vapi"),
+      v.literal("voice_nav"),
+      v.literal("database"),
+    ),
     value: v.any(),
   },
   handler: async (ctx, args) => {

@@ -18,4 +18,3 @@ export default function Page({ searchParams }: Props) {
 
   return <WidgetView organizationId={organizationId} />;
 }
-

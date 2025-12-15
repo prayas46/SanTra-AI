@@ -202,7 +202,7 @@ const sendMessage = useMutation(api.messages.send);
 
 ## 🌟 Technology Stack
 
-- **Frontend**: Next.js 15 (web & widget), React 19, TypeScript, Vite (embed app)
+- **Frontend**: Next.js 15.4.10 (web & widget), React 19, TypeScript, Vite (embed app)
 - **Styling & UI**: Tailwind CSS, shadcn/ui, Radix UI, lucide-react, Dicebear avatars, Embla Carousel, Recharts, Sonner toasts, markdown rendering with react-markdown + remark-gfm
 - **Backend & Realtime**: Convex (BaaS), Convex Agents, convex-helpers, WebSockets (`ws`)
 - **AI & LLM Orchestration**: Vercel AI SDK (`ai`), OpenAI (`@ai-sdk/openai`), Google (`@ai-sdk/google`), Convex RAG (`@convex-dev/rag`)

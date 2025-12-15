@@ -59,6 +59,11 @@ const configurationItems = [
     url: "/plugins/vapi",
     icon: Mic,
     },
+     {
+      title: "Voice Navigation",
+      url: "/plugins/voice-nav",
+      icon: Mic,
+     },
 ];
 
 const accountItems = [
